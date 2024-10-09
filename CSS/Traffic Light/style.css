@@ -1,0 +1,29 @@
+#whole {
+  height: 500px;
+  width: 110px;
+  background-color: #000000;
+  margin-top: 60px;
+  margin-left: 610px;
+}
+.lights {
+  border: 9px solid #000000;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-inline: auto;
+}
+#Green {
+  height: 80px;
+  width: 80px;
+  background-color: #009000;
+}
+#Yellow {
+  height: 80px;
+  width: 80px;
+  background-color: #ffff00;
+}
+#Red {
+  height: 80px;
+  width: 80px;
+  background-color: #ff0000;
+}

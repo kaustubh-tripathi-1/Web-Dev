@@ -1,0 +1,85 @@
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+input {
+  color: rgb(255, 255, 0);
+  background-color: #414141;
+  height: 30px;
+  width: 300px;
+  font-size: 20px;
+}
+.Heading {
+  color: #0400ff;
+  text-transform: capitalize;
+  border-style: solid;
+  border-width: 9px;
+  border-color: #009000;
+  padding: 25px;
+  margin: 25px;
+  display: block;
+}
+button {
+  color: #d48989;
+  background-color: #414141;
+}
+.set3 {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(0, 200, 0, 0.9);
+  border: 10px solid #000000;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 10px;
+  margin-inline: auto;
+  max-width: fit-content;
+}
+.position {
+  display: inline-block;
+  width: 100px;
+  height: fit-content;
+  margin: 30px;
+  background-color: #00ffff;
+  border: 4px #000000 solid;
+  padding: 20px;
+}
+body {
+  background-color: #a3a3a3;
+  background-image: url("./Assets/couple.jpg");
+  background-size: cover;
+  text-align: center;
+}
+#box1 {
+  background-image: url(./Assets/couple.jpg);
+  background-size: cover;
+}
+#box2 {
+  position: sticky;
+  top: 20px;
+}
+#box3 {
+  position: relative;
+}
+#box4 {
+  position: relative;
+}
+#box7 {
+  position: flex;
+  flex-grow: 0;
+}
+#box8 {
+  position: flex;
+  align-self: center;
+}
+
+#flex {
+  display: flex;
+  border: 2px #000000 solid;
+  flex-direction: row;
+  height: 600px;
+  width: 2000px;
+}

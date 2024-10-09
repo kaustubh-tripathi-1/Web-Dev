@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: cursive;
+  background-color: #343434;
+  color: #ca6979;
+}
+
+#container {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 4rem;
+}
+
+#page-heading {
+  background-color: black;
+  width: 100%;
+  text-align: center;
+}
+
+#guess-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#guess {
+  font-size: 3rem;
+  margin: 2rem;
+}
+
+#guess-input {
+  background-color: white;
+  color: black;
+  height: 2rem;
+  width: 10rem;
+  font-size: 2rem;
+  margin: 1rem;
+  text-align: center;
+}
+
+#submit-btn {
+  height: 7vmax;
+  margin: 1rem;
+  width: 30vw;
+  background-color: black;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}
+
+#prev-guess-para {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#low-or-hi {
+  text-align: center;
+}
+
+.new-game {
+  height: 7vmax;
+  margin: 1rem;
+  width: 30vw;
+  background-color: black;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}

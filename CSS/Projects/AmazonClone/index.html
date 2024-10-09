@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon</title>
+    <!--# Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!--& Nav Bar -->
+    <header>
+      <div id="navbar">
+        <!-- @ Amazon Logo -->
+        <a href="./index.html" id="amazon-logo-a">
+          <img
+            src="./Assets/amazon_logo.png"
+            alt="amazon-logo"
+            id="amazon-logo"
+            class="navbar-hover-border"
+          />
+        </a>
+        <!-- @ Location Box -->
+        <div id="location-div">
+          <a
+            href="#"
+            id="location-a"
+            class="navbar-hover-border"
+            class="navbar-location"
+          >
+            <img
+              id="map-pin"
+              src="./Assets/map-marker-2-512.png"
+              alt="location-icon"
+            />
+            <div id="nav-location" class="navbar-location">
+              <p id="location-p1" class="navbar-location">
+                Delivering to Ghaziabad 201003
+              </p>
+              <div id="location-p2" class="navbar-location">
+                <p>Update location</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- @ Search Box -->
+        <form action="#" target="_blank" method="get">
+          <div id="div-fill">
+            <div id="search-div">
+              <select
+                name="Categories"
+                id="Category-dropdown"
+                class="search-elements"
+                size="1"
+              >
+                <option value="All" id="select-All" class="dropdown-options">
+                  All
+                </option>
+                <option class="dropdown-options" value="Electronics">
+                  Electronics
+                </option>
+                <option class="dropdown-options" value="Home">Home</option>
+                <option class="dropdown-options" value="Furniture">
+                  Furniture
+                </option>
+                <option class="dropdown-options" value="Clothing">
+                  Clothing
+                </option>
+                <option class="dropdown-options" value="Mobile Phones">
+                  Mobile Phones
+                </option>
+              </select>
+              <input
+                type="search"
+                name="search-amazon"
+                id="search-amazon"
+                placeholder="Search Amazon.in"
+                class="search-elements"
+              />
+              <button
+                type="submit"
+                id="search-icon-button"
+                class="search-elements"
+              >
+                <i class="fa-solid fa-magnifying-glass" id="searchimage"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+        <!-- @ Language Box -->
+        <div class="language-div" class="navbar-hover-border">
+          <a href="#" id="language-div-a" class="navbar-hover-border">
+            <img
+              id="india-flag"
+              src="./Assets/india-flag.jpg"
+              alt="language-flag"
+              class="language-div-elements"
+            />
+            <p
+              id="language-select"
+              class="navbar-bold"
+              class="language-div-elements"
+            >
+              EN
+            </p>
+            <img
+              class="caret-down"
+              class="language-div-elements"
+              src="./Assets/sort-down-32.png"
+              alt="down-arrow"
+            />
+          </a>
+        </div>
+        <!--@ Sign In Box -->
+        <a href="#" id="sign-in-anchor" class="navbar-hover-border">
+          <p id="sign-in" class="nav-bar-light-font">
+            <span>Hello, sign in</span>
+          </p>
+          <p id="sign-in-accounts" class="nav-bar-bold-font">
+            Accounts & Lists
+            <img
+              class="caret-down caret-down-sign-in"
+              src="./Assets/sort-down-32.png"
+              alt="down-arrow"
+            />
+          </p>
+        </a>
+
+        <!--@ Returns & Orders Box -->
+        <a href="#" id="orders-box" class="navbar-hover-border">
+          <p id="returns" class="nav-bar-light-font">Returns</p>
+          <p id="orders" class="nav-bar-bold-font">& Orders</p>
+        </a>
+        <!--@ Cart Box -->
+        <a href="#" id="cart-box-anchor" class="navbar-hover-border">
+          <img src="./Assets/cart.png" alt="cart" id="cart-icon" />
+          <p class="nav-bar-bold-font" id="cart-p">Cart</p>
+        </a>
+      </div>
+    </header>
+
+    <!--& Menu Panel -->
+
+    <!--@ Menu Option -->
+    <div id="menu-panel">
+      <a
+        href="#"
+        id="menu-all-a"
+        class="menu-panel-elements navbar-hover-border display-flex"
+      >
+        <img src="./Assets/menu-30.png" alt="menu-icon" id="menu-icon" />
+        <p id="menu-option">All</p>
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+        id="menu-fresh-a"
+      >
+        <p id="fresh-p">Fresh</p>
+        <img
+          src="./Assets/sort-down-32.png"
+          alt=""
+          class="caret-down caret-down-fresh"
+        />
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+        id="amazon-mini-tv-option"
+      >
+        <p id="amazon-mini-tv-p">Amazon miniTV</p>
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+      >
+        <p id="sell-p">Sell</p>
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+      >
+        <p id="best-sellers-p">Best Sellers</p>
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+      >
+        <p id="todays-deals-p">Today's Deals</p>
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+      >
+        <p id="mobiles-p">Mobiles</p>
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+      >
+        <p id="customer-service-p">Customer Service</p>
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+      >
+        <p id="prime-p">Prime</p>
+        <img
+          src="./Assets/sort-down-32.png"
+          alt=""
+          class="caret-down"
+          class="caret-down-prime"
+        />
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+      >
+        <p id="electronics-p">Electronics</p>
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+      >
+        <p id="fashion-p">Fashion</p>
+      </a>
+      <a
+        href="#"
+        class="menu-panel-elements navbar-hover-border display-flex panel-font"
+        id="mini-tv-ad-a"
+      >
+        <img src="./Assets/amazon-mini--tv.png" alt="" id="mini-tv-ad" />
+      </a>
+    </div>
+
+    <!--@ Hero Section -->
+    <div id="hero-section"></div>
+
+    <!--@ Shop Section -->
+    <div id="shop-section">
+      <!--& Card 1 -->
+      <div id="card1" class="shop-section-div shop-section-flex">
+        <h3 id="card1-heading-h3" class="card-headings">
+          Revamp your home in style
+        </h3>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card1/Card1-image1.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">
+            Cushion covers,<br />
+            bedsheets & more
+          </p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card1/Card1-image2.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Figurines, vases & more</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card1/Card1-image3.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Home Storage</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card1/Card1-image4.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Lighting solutions</p>
+        </div>
+      </div>
+      <!--& Card 2 -->
+      <div id="card2" class="shop-section-div shop-section-flex">
+        <h3 id="card2-heading-h3" class="card-headings">
+          Appliances for your home | <br />Up to 55% off
+        </h3>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card2/Card2-image1.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Air Conditioners</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card2/Card2-image2.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Refrigerators</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card2/Card2-image3.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Microwaves</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card2/Card2-image4.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Washing Machines</p>
+        </div>
+      </div>
+      <!--& Card 3 -->
+      <div id="card3" class="shop-section-div shop-section-flex">
+        <h3 id="card3-heading-h3" class="card-headings">
+          Starting ₹199 | Amazon <br />Brands & more
+        </h3>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card3/Card3-image1.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Starting ₹199 | Bedsheets</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card3/Card3-image2.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Starting ₹199 | Curtains</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card3/Card3-image3.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">
+            Minimum 40% off | Ironing board & more
+          </p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card3/Card3-image4.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">
+            Up to 60% off | Home decor
+          </p>
+        </div>
+      </div>
+      <!--& Card 4 -->
+      <div id="card4" class="shop-section-div shop-section-flex">
+        <h3 id="card4-heading-h3" class="card-headings">
+          Starting ₹99 | Amazon <br />Brands & more
+        </h3>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card4/Card4-image1.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">
+            Starting ₹299 | Home storage & organization
+          </p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card4/Card4-image2.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Up to 60% off | Storage & racks</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card4/Card4-image3.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">
+            Starting ₹99 | Toys & games
+          </p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card4/Card4-image4.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">
+            Up to 60% off | Jackets, dresses & more
+          </p>
+        </div>
+      </div>
+      <!--& Card 5 -->
+      <div id="card5" class="shop-section-div shop-section-flex">
+        <h3 id="card5-heading-h3" class="card-headings">
+          Starting ₹149 | Headphones
+        </h3>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card5/Card5-image1.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Starting ₹249 | boAt</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card5/Card5-image2.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Starting ₹349 | boult</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card5/Card5-image3.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Starting ₹649 | Noise</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card5/Card5-image4.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Starting ₹149 | Zebronics</p>
+        </div>
+      </div>
+      <!--& Card 6 -->
+      <div id="card6" class="shop-section-div shop-section-flex">
+        <h3 id="card6-heading-h3" class="card-headings">
+          Up to 60% off | Styles for <br />women
+        </h3>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card6/Card6-image1.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Women's Clothing</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card6/Card6-image2.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Footwear+Handbags</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card6/Card6-image3.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">Watches</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card6/Card6-image4.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">Fashion jewellery</p>
+        </div>
+      </div>
+      <!--& Card 7 -->
+      <div id="card7" class="shop-section-div shop-section-flex">
+        <h3 id="card7-heading-h3" class="card-headings">
+          Automotive essentials | Up to <br />60% off
+        </h3>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card7/Card7-image1.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Cleaning accessories</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card7/Card7-image2.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Tyre & rim care</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card7/Card7-image3.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">Helmets</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card7/Card7-image4.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">Vacuum cleaner</p>
+        </div>
+      </div>
+      <!--& Card 8 -->
+      <div id="card8" class="shop-section-div shop-section-flex">
+        <h3 id="card8-heading-h3" class="card-headings">
+          Up to 60% off | <br />Professional tools, testing...
+        </h3>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card8/Card8-image1.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Professional tools</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card8/Card8-image2.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description">Measuring instruments</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card8/Card8-image3.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">Cleanign supplies</p>
+        </div>
+        <div class="shop-section-img-p">
+          <img
+            src="./Assets/Cards/Card8/Card8-image4.jpg"
+            alt=""
+            class="card-images"
+          />
+          <p class="image-description large-description">Medical supplies</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

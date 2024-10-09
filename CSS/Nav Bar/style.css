@@ -1,0 +1,30 @@
+.nav {
+  height: 60px;
+  background-color: #0f1111;
+}
+#amazon {
+  text-decoration: none;
+  font-size: 25px;
+  color: #ff7f00;
+  margin-left: 20px;
+}
+#hreftextcolor {
+  text-decoration: none;
+  color: #ffffff;
+}
+#search {
+  height: fit-content;
+  width: fit-content;
+}
+#navbarbutton {
+  height: 20px;
+  background-color: #ff7f00;
+  color: #ffffff;
+}
+.margin {
+  margin-right: 170px;
+  margin-top: 20px;
+}
+input {
+  margin-top: 20px;
+}

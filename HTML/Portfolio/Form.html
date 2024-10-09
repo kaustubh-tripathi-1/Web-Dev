@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <h2>Sign Up Form</h2>
+    <form>
+      <label for="username" method="post">Username : </label>
+      <input type="text" placeholder="Enter your userame" id="username" />
+      <br />
+      <br />
+      <label for="password">Password : </label>
+      <input type="password" placeholder="Enter password" id="password" />
+      <br />
+      <br />
+      <hr />
+      <h2>Radio Buttons</h2>
+      <label id="id1">
+        <input type="radio" value="Class 11th" name="class" id="id1" />Class
+        11th
+      </label>
+      <br />
+      <label id="id2">
+        <input type="radio" value="Class 11th" name="class" id="id2" />Class
+        11th
+      </label>
+      <br />
+      <br />
+
+      <hr />
+      <h2>Subject Checkboxes</h2>
+      <fieldset>
+        <label id="Maths">
+          <input type="checkbox" value="Maths" name="subject" id="1" /> Maths
+        </label>
+        <br />
+        <label id="Physics">
+          <input type="checkbox" value="Physics" name="subject" id="2" />
+          Physics
+        </label>
+        <br />
+        <label id="English">
+          <input type="checkbox" value="English" name="subject" id="3" />
+          English
+        </label>
+        <br />
+        <label id="Chemistry">
+          <input type="checkbox" value="Chemistry" name="subject" id="4" />
+          Chemistry
+        </label>
+        <br />
+        <label id="Physical Education">
+          <input
+            type="checkbox"
+            value="Physical Education"
+            name="subject"
+            id="5"
+          />
+          Physical Education
+        </label>
+        <br />
+        <label for="date">
+          <input type="date" name="date" id="date" />
+        </label>
+      </fieldset>
+      <br />
+      <hr />
+      <h2>Text Area Tag</h2>
+      <textarea
+        name="Feedback"
+        id="6"
+        placeholder="Please give your Feedback!"
+        rows="10"
+        cols="40"
+      ></textarea>
+      <hr />
+      <h2>Dropdown with Select</h2>
+      Select your City :
+      <select name="City" id="City">
+        <option value="Select">Select</option>
+        <option value="Ghaziabad">Ghaziabad</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Noida">Noida</option>
+        <option value="Mumbai">Mumbai</option>
+      </select>
+      <br />
+      <br />
+      <input type="submit" value="Submit" />
+
+      <hr />
+      <h2>IFrame Tag</h2>
+      <iframe
+        src="https://www.youtube.com/embed/HcOc7P5BMi4?si=NRSq7Q3-ClXW562F"
+        width="800"
+        height="500"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+      <br />
+      <hr />
+      <h2>Video Tag</h2>
+      <video
+        src="./Assets/0_Orientation.mkv"
+        loop
+        controls
+        height="500"
+        width="800"
+      >
+        Lecture
+      </video>
+    </form>
+  </body>
+</html>
