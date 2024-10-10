@@ -175,8 +175,13 @@ let doctor = new Engineer();
 
 //$ Super Keyword
 
-class Person {
-    constructor() {}
+//& Constructor control flow in parent and child class and use of super keyword
+/* class Person {
+    constructor(name) {
+        this.species = "Homo Sapiens";
+        this.name = name;
+        console.log(`Entered Parent Constructor`);
+    }
     eat() {
         console.log(`eating`);
     }
@@ -184,19 +189,109 @@ class Person {
         console.log(`sleeping`);
     }
 }
-
 //& Child Class of Person
 class Engineer extends Person {
+    constructor(name) {
+        console.log(`Entered Child Constructor`);
+
+        super(name); //& Passing the name argument to parent class with super()
+
+        this.name = name;
+        console.log(`Exited Child Constructor`);
+    }
+
     work() {
         console.log(`working`);
     }
 }
 
-//& Child Class of Person
-class Doctor extends Person {
-    operate() {
-        console.log(`operating`);
-    }
+// let eng = new Engineer(`CS`);
+let obj = new Engineer(`Kaustubh`); */
+
+//@ Advanced JS - Async Await, Promises, Callbacks
+
+//$ Async Programming
+/* 
+console.log(`1`);
+console.log(`2`);
+
+//& Asynchronous ( will be executed parallely and code after it will still execute immediately w/o waiting for this)
+setTimeout(() => {
+    console.log(`hello`);
+}, 5000);
+
+console.log(`3`);
+console.log(`4`); */
+
+//$ Callback Hell / Nesting
+
+/* function getData(data, nextData) {
+    setTimeout(() => {
+        console.log(data);
+        if (nextData) {
+            nextData();
+        }
+    }, 2000);
 }
 
-let doctor = new Engineer();
+//& Difficult to manage this code of callback nesting/hell
+getData(1, () => {
+    getData(2, () => {
+        getData(3, () => {
+            getData(4);
+        });
+    });
+}); */
+
+//$ To resolve this, Promise was introduced
+
+//& Creating promises to understand the concept
+/* let prom = new Promise((resolve, reject) => {
+    console.log(`I'm a promise`);
+
+    // resolve(`Promise fulfilled.`); //& Fulfilled State using resolve
+
+    reject(`Promise unfulfilled, some error occurred.`); //& Value passed to reject will be shown as an error
+}); */
+
+//& Generally we don't create our Promises, Promises are returned to us by some API etc. Then we handle that promise -
+
+/* function getData(data, nextData) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(data);
+            resolve(`success`); //& If not resolved, the promise state will always remain pending
+            if (nextData) {
+                nextData();
+            }
+        }, 5000);
+    });
+}
+
+let val = getData(23); */
+
+//& Actually using a promise returned by an API or something else
+
+function returnPromise() {
+    return new Promise((resolve, reject) => {
+        console.log(`Inside Promise`);
+
+        const state = true;
+
+        if (state) {
+            resolve(`Promise fulfilled!`);
+        } else {
+            reject(`Promise rejected coz of some error`);
+        }
+    });
+} //& A function that returns a promise ( mimicing the behaviour of an API)
+
+let promise = returnPromise(); //& Storing the returned promise in a var.
+
+promise
+    .then((result) => {
+        console.log(`In then, resolved msg - ${result}`);
+    }) //& What to do when promise was fulfilled
+    .catch((error) => {
+        console.log(`In catch, error msg - ${error}`);
+    }); //& What to do when promise was rejected

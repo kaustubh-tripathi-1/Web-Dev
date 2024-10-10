@@ -9,8 +9,8 @@ para.innerHTML = "Hello, World!";
 const item = document.querySelectorAll(".item");
 
 for (let i = 0; i < item.length; i++) {
-  item[i].style.backgroundColor = "#606060";
-  item[i].style.padding = "20px";
+    item[i].style.backgroundColor = "#606060";
+    item[i].style.padding = "20px";
 }
 
 //@ Question 3
@@ -34,13 +34,13 @@ ul1.prepend(li1);
 let allDiv = document.querySelectorAll("div");
 
 allDiv.forEach((node) => {
-  node.classList.add("menu-item");
+    node.classList.add("menu-item");
 });
 
 let menu = document.querySelectorAll(".menu-item");
 
 for (let i = 0; i < menu.length; i++) {
-  menu[i].style.fontSize = "2rem";
+    menu[i].style.fontSize = "2rem";
 }
 
 //@ Question 5
@@ -58,10 +58,10 @@ const secondChild = outerDiv.children[2];
 outerDiv.insertBefore(deleteButton, secondChild);
 
 function deleteElement() {
-  let paraToDelete = document.querySelector("#deleteMe");
-  if (paraToDelete) {
-    paraToDelete.remove();
-  }
+    let paraToDelete = document.querySelector("#deleteMe");
+    if (paraToDelete) {
+        paraToDelete.remove();
+    }
 }
 
-deleteButton.addEventListener("dblclick", deleteElement);
+deleteButton.addEventListener("click", deleteElement);
