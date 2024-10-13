@@ -272,7 +272,7 @@ let val = getData(23); */
 
 //& Actually using a promise returned by an API or something else
 
-function returnPromise() {
+/*function returnPromise() {
     return new Promise((resolve, reject) => {
         console.log(`Inside Promise`);
 
@@ -294,4 +294,225 @@ promise
     }) //& What to do when promise was fulfilled
     .catch((error) => {
         console.log(`In catch, error msg - ${error}`);
-    }); //& What to do when promise was rejected
+    }); //& What to do when promise was rejected */
+
+//$ Promise Chains
+
+/* //$ Simple working Promise
+//& API work kind of
+function asyncFunc() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`data1`);
+            resolve(`success`);
+        }, 3000);
+    });
+}
+
+let p1 = asyncFunc();
+
+//& Handling the promise returned by API
+console.log(`fetching data 1`);
+p1.then((result) => {
+    console.log(result);
+}); */
+
+//$ Promise chaining basic
+
+/* //& API work kind of
+function asyncFunc1() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`data1`);
+            resolve(`success`);
+        }, 3000);
+    });
+}
+function asyncFunc2() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`data2`);
+            resolve(`success`);
+        }, 3000);
+    });
+}
+
+let p1 = asyncFunc1();
+let p2 = asyncFunc2();
+
+//# In this case, both promises will be resolved together
+//& Handling the promise1 returned by API
+console.log(`fetching data 1`);
+p1.then((result) => {
+    console.log(result);
+});
+//& Handling the promise2 returned by API
+console.log(`fetching data 2`);
+p2.then((result) => {
+    console.log(result);
+}); */
+
+//& So to avoid and implement async prog., we chain promises
+
+//& API work kind of
+/* function asyncFunc1() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`data1`);
+            resolve(`success`);
+        }, 3000);
+    });
+}
+function asyncFunc2() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`data2`);
+            resolve(`success`);
+        }, 3000);
+    });
+}
+
+let p1 = asyncFunc1();
+
+//% Now both promises are chained together so that 1st one is executed first and data is fetched & then after 3 more seconds, 2nd is executed and 2nd data is fetched
+//% like in a login page, we want to fetch the username first and after it is found then we match the password
+//& Handling the promise1 returned by API
+console.log(`fetching data 1`);
+p1.then((result) => {
+    //& Handling the promise2 returned by API
+    let p2 = asyncFunc2();
+    console.log(`fetching data 2`);
+    p2.then((result) => {
+        console.log(result);
+    });
+}); */
+
+//& Actual/Better way to chain promises
+
+/* function asyncFunc1() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`data1`);
+            resolve(`success`);
+        }, 3000);
+    });
+}
+function asyncFunc2() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`data2`);
+            resolve(`success`);
+        }, 3000);
+    });
+}
+
+console.log(`fetching data 1`);
+asyncFunc1().then((result) => {
+    console.log(`fetching data 2`);
+    asyncFunc2().then((result) => {
+        console.log(result);
+    });
+}); */
+
+//& Previous Example with Promises
+/* function getData(data) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(data);
+            resolve(`success`);
+        }, 2000);
+    });
+}
+
+//& Actual Promise Chain
+getData(1)
+    .then((result) => {
+        return getData(2);
+    })
+    .then((result) => {
+        return getData(3);
+    })
+    .then((result) => {
+        return getData(4);
+    })
+    .then((result) => {
+        console.log(result);
+    }); */
+
+//$ Async - Await
+
+//^ Better, simpler and more readable way to write Async programming code
+
+//& Basic Example to understand
+//& API that returns weather data
+/* function api() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`weather data`);
+            resolve(`successfully gave weather data`);
+        }, 2000);
+    });
+}
+
+async function getWeatherData() {
+    await api(); //& All ahead execution will be stopped until this process is done
+    await api();
+}
+
+getWeatherData(); */
+
+//& Previous getData() example with Async - Await
+
+/* function getData(data) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(data);
+            resolve(`success`);
+        }, 2000);
+    });
+}
+
+async function getDataAgain() {
+    await getData(1);
+    await getData(2);
+    await getData(3);
+}
+
+// getDataAgain(); //& Unnecessary Call to async Function
+
+//% To avoid that unnecessary call, Use IIFE, but can use IIFE only once as it doesn't have any name
+(async function () {
+    await getData(1);
+    await getData(2);
+    await getData(3);
+})(); */
+
+//@ setTimeout(), clearTiemout() and setInterval(), clearInterval() function funcitoning
+
+const displayDate = () => {
+    let date = new Date();
+    console.log(date.toLocaleTimeString());
+};
+
+let dateStop;
+
+let dateCall = () => {
+    dateStop = setInterval(displayDate, 1000);
+};
+
+document.querySelector(`#start`).addEventListener(`click`, dateCall);
+document.querySelector(`#stop`).addEventListener(`click`, () => {
+    clearInterval(dateStop);
+});
+
+function changeText() {
+    document.querySelector(`h1`).innerHTML = `KT`;
+}
+let change;
+function changeName() {
+    change = setTimeout(changeText, 3000);
+}
+document.querySelector(`#start`).addEventListener(`click`, changeName);
+document.querySelector(`#stop`).addEventListener(`click`, () => {
+    clearTimeout(change);
+});
