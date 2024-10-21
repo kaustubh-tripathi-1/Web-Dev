@@ -1,0 +1,12 @@
+body {
+    background-color: #343434;
+    color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#table1 {
+    height: 10rem;
+    width: 15rem;
+}

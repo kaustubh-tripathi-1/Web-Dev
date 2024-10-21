@@ -15,7 +15,9 @@ function randomColor() {
 let startColor;
 function startChanging() {
     startColor = setInterval(() => {
-        body.style.backgroundColor = randomColor();
+        if (!startColor) {
+            body.style.backgroundColor = randomColor();
+        }
     }, 1000);
 }
 function stopChanging() {

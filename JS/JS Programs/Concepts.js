@@ -105,11 +105,52 @@ const light = btn.addEventListener("mouseout", darkm); */
 
 const Ram = {
     salary: 200000,
+    __proto__: emp, //& Given Access to Ram object of calTax() method of emp Object inside the Ram object itself
 };
 
-Ram.__proto__ = emp;
+//? Old Syntax for prototypal inheritance
+Ram.__proto__ = emp; //& Given Access to Ram object of calTax() method of emp Object.
 
-Ram.calTax(); */
+//? New Syntax for prototypal inheritance
+Object.setPrototypeOf(Ram, emp);
+
+Ram.calTax(); //& Now Ram can use calTax() */
+
+//$ Adding a prototype method for all objects like arrays, objects, strings etc.
+/* const heros = [`ironman`, `thor`, `hulk`];
+
+//& Array, strings etc. ( childrens ) -> Object ( no parent ) -> null ( prototype ref. )
+
+let heroPowers = {
+    ironman: `suit`,
+    thor: `hammer and thunder`,
+    hulk: `big green guy`,
+
+    getSuperPower: function () {
+        console.log(this.ironman);
+    },
+};
+
+//& Adding a custom method (name) to the prototype of Object for all objects ( arrays, strings, functions etc. )
+Object.prototype.name = () => {
+    console.log(`Kaustubh`);
+};
+
+heroPowers.name(); */
+
+//& Adding a custom method trueLength() to all strings
+
+/* let username = `Kaustubh        `;
+
+String.prototype.trueLength = function () {
+    console.log(this);
+    console.log(`${this}`);
+    console.log(`True Length of string is ${this.trim().length}`);
+};
+
+username.trueLength();
+
+`Kaustubh Tripathi`.trueLength(); */
 
 //$ Class
 
@@ -260,7 +301,7 @@ getData(1, () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log(data);
-            resolve(`success`); //& If not resolved, the promise state will always remain pending
+            resolve(`success`); //& If not resolved/reject, the promise state will always remain pending
             if (nextData) {
                 nextData();
             }
@@ -271,7 +312,7 @@ getData(1, () => {
 let val = getData(23); */
 
 //& Actually using a promise returned by an API or something else
-
+//& No need to pass callbacks now
 /*function returnPromise() {
     return new Promise((resolve, reject) => {
         console.log(`Inside Promise`);
@@ -489,7 +530,7 @@ async function getDataAgain() {
 
 //@ setTimeout(), clearTiemout() and setInterval(), clearInterval() function funcitoning
 
-const displayDate = () => {
+/* const displayDate = () => {
     let date = new Date();
     console.log(date.toLocaleTimeString());
 };
@@ -515,4 +556,125 @@ function changeName() {
 document.querySelector(`#start`).addEventListener(`click`, changeName);
 document.querySelector(`#stop`).addEventListener(`click`, () => {
     clearTimeout(change);
-});
+}); */
+
+//@ Fetch API
+
+/* let url = `https://api.github.com/users/kaustubh-tripathi-1`;
+let response;
+async function github() {
+    try {                               //& In async-await, we use try, catch block to handle with errors as we used to do with .then() and .catch() with Promises
+        response = await fetch(url);
+        js = await response.json(); //& To convert the object into JSON, can use .json() but as this task also takes some time, we use await here too.
+        console.log(response);
+        console.log(js);
+        console.log(typeof response);
+        console.log(typeof js);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+github(); */
+
+//$ Using the fetched data from API in our Webpage
+
+/* let para = document.querySelector(`#data`);
+
+let url = `https://api.github.com/users/kaustubh-tripathi-1`;
+let response;
+async function github() {
+    try {
+        response = await fetch(url);
+        js = await response.json(); //& Converts the Object to JSON
+        console.log(response);
+        console.log(response.url); //& Possible as it is a Response Object
+        console.log(response.ok); //& Response object's ok property ( bool ) which states the response was successful
+        console.log(response.status); //& Response object's status property contains the HTTP Code for the response
+        console.log(js);
+        console.log(typeof response);
+        console.log(typeof js);
+
+        para.innerHTML = `${js.bio}`; //& Inserting the data fetched from the API in our webpage
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+github(); */
+
+//@ Event Loop working
+
+/* What is the JavaScript Event Loop?
+The event loop is a fundamental part of JavaScript's concurrency model that allows it to handle asynchronous tasks, despite being a single-threaded language. JavaScript uses the event loop to manage the execution of code, collect and process events, and execute queued sub-tasks (such as callback functions).
+
+
+
+Here’s a breakdown of how the event loop works:
+
+Call Stack: This is where your functions get executed. When a function is called, it gets pushed to the call stack. When it finishes executing, it's popped off the call stack. JavaScript executes everything in the call stack synchronously, one task at a time.
+
+Web APIs (for Browser): When an asynchronous function like setTimeout(), fetch(), or event listeners are triggered, these tasks are passed to the browser's Web API. The Web API handles these asynchronous operations outside of the main call stack.
+
+Task Queue: Once an asynchronous task completes (like a setTimeout callback after the specified delay), the callback function is moved to the task queue (also called the callback queue).
+
+Event Loop: The event loop continuously checks if the call stack is empty. If the call stack is empty and there are tasks in the task queue, the event loop moves the first task from the task queue to the call stack and executes it. This ensures that asynchronous tasks (like setTimeout() callbacks) are executed after the synchronous code has finished.
+
+Microtask Queue: In addition to the task queue, there's also a microtask queue, which includes tasks like promises. These microtasks have a higher priority than tasks in the task queue and are executed after the current code in the call stack finishes but before any task queue callbacks. */
+
+//@ Call() and this in JS
+
+//$ Using another function with the context (this) of current function
+
+/* function SetUsername(username) {
+    //complex DB calls
+    this.username = username;
+    console.log("called");
+}
+
+function createUser(username, email, password) {
+    SetUsername.call(this, username); //& Call method, if call() is not used then when setUsername() is called, its variable username is destroyed as soon as the function's memory is released and createUsername() 's username parameter isn't initialized
+
+    this.email = email;
+    this.password = password;
+}
+
+const kt = new createUser("kaustubh", "kt@abc.com", "123");
+console.log(kt); */
+
+//$ Borrowing a method from another object
+
+/* const person1 = {
+    name: "Alice",
+    greet: function (greeting) {
+        console.log(`${greeting}, my name is ${this.name}`);
+    },
+};
+
+const person2 = {
+    name: "Bob",
+};
+
+//& Borrow person1's greet method and use it for person2
+person1.greet.call(person2, "Hello");   //& Can write object name as well as 'this' represents an object 
+*/
+
+//@ apply()
+
+//$ same as call(), only diff. is that list of arguments are in form of array
+
+/* function SetUsername(username) {
+    //complex DB calls
+    this.username = username;
+    console.log("called");
+}
+
+function createUser(username, email, password) {
+    SetUsername.apply(this, [username]); //& apply() method, with username arg. passed as an array
+
+    this.email = email;
+    this.password = password;
+}
+
+const kt = new createUser("kaustubh", "kt@abc.com", "123");
+console.log(kt); */
