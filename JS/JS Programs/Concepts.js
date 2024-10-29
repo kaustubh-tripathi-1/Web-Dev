@@ -678,3 +678,65 @@ function createUser(username, email, password) {
 
 const kt = new createUser("kaustubh", "kt@abc.com", "123");
 console.log(kt); */
+
+//@ bind() in JS
+
+//& Permanently binding a method to an object
+/* const person = {
+    name: "John",
+    greet: function () {
+        console.log(`Hello, my name is ${this.name}`);
+    },
+};
+
+const greetJohn = person.greet.bind(person); //$ Binding `this` to `person`
+greetJohn(); //$ This will still refer to `person` when called later
+//$ Without bind(), greetJohn() would've lost its context ( this ) and refer to the global object
+
+//& Using bind() to preserve this in Event handlers
+
+let button = document.querySelector(`#btn`);
+
+const user = {
+    name: "Alice",
+    handleClick: function () {
+        console.log(`Clicked by ${this.name}`);
+    },
+};
+
+//$ Using bind to make sure `this` refers to the `user` object
+button.addEventListener(`click`, user.handleClick.bind(user));
+//$ Without bind(), this in handleClick() would refer to the button itself */
+
+//& Partial Application of Arguments ( currying )
+//& Binding with arguments
+/* function multiply(a, b) {
+    return a * b;
+}
+
+const multiplyBy5 = multiply.bind(null, 5); //$ Pre-setting the first argument (a = 5), this is null meaning context doesn't matter
+
+console.log(multiplyBy5(4)); //$ 20 = 5 * 4 */
+
+//& bind() with event handlers and React class
+
+//$ When the button is click, the handleClick() method is executed with the context of app Object
+/* class React {
+    constructor() {
+        this.library = `React`;
+        this.server = `https://localhost:5000`;
+
+        document
+            .querySelector(`#button`)
+            .addEventListener(`click`, this.handleclick.bind(this));
+    }
+
+    handleclick() {
+        console.log(`button clicked`);
+        console.log(this);
+        console.log(this.server);
+        console.log(this.library);
+    }
+}
+
+const app = new React(); */
