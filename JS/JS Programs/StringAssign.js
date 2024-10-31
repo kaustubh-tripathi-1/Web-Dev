@@ -100,7 +100,7 @@ let rev = reverse(str);
 if (str === rev) console.log("String is a palindrome");
 else console.log("String is not a palindrome"); */
 
-/* //@ Question 6
+/** //@ Question 6
 
 function vowelCount(str) {
   let i,
@@ -150,9 +150,9 @@ let consonants = len - (vowel + spaces);
 
 console.log(`Vowels - ${vowel}\nConsonants - ${consonants}`); */
 
-/* //@ Question 7
+//@ Question 7
 
-let str = `A fox went up the hill and didn't come back. The fox should've come back. I think the fox died.`;
+/* let str = `A fox went up the hill and didn't come back. The fox should've come back. I think the fox died.`;
 
 let repStr = str.replace(`fox`, `hyeena`);
 let repAllStr = str.replaceAll(`fox`, `hyeena`);

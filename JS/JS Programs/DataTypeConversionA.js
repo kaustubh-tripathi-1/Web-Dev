@@ -38,7 +38,7 @@ convertToString(num); */
 
 //@ Question 3
 
-function convertToBoolean(s) {
+/* function convertToBoolean(s) {
   let bool;
 
   if (s === "true") {
@@ -60,3 +60,4 @@ convertToBoolean(str1);
 convertToBoolean(str2);
 convertToBoolean(str3);
 convertToBoolean(str4);
+ */
