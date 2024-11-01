@@ -1,3 +1,9 @@
+body {
+    background-color: #343434;
+    color: #fff;
+}
+
+/**
 #heading1 {
     margin: 1rem;
     background-color: aqua;
@@ -31,4 +37,42 @@
 .light {
     background-color: #fff;
     color: #000;
+} */
+
+/*@ DOM Assign, Q8 */
+
+/* .table {
+    border: 2px solid #000;
+    margin: 10px;
+    border-collapse: collapse;
 }
+
+td {
+    padding: 20px;
+    border: 2px solid #000;
+} */
+
+/*@ DOM Assign, Q9 */
+
+/**
+#colorBox {
+    height: 15rem;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-inline: auto;
+} */
+
+/*@ DOM Assign, Q10 */
+
+/* .highlight {
+    background-color: #ff778e;
+    color: #000;
+}
+
+.normal {
+    background-color: #343434;
+    color: #fff;
+} */

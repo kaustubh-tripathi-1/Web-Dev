@@ -6,7 +6,7 @@ let boxes = containerDiv.children;
 
 let boxesArray = Array.from(boxes);
 
-/* boxesArray.forEach((node) => {
+/** boxesArray.forEach((node) => {
   node.addEventListener(
     "click",
     () => {
@@ -20,15 +20,17 @@ let boxesArray = Array.from(boxes);
 });
  */
 for (let i = 0; i < boxes.length; i++) {
-  boxes[i].addEventListener("click", () => {
-    let nodeStyle = window.getComputedStyle(boxes[i]);
-    let backgroundColor = nodeStyle.getPropertyValue("background-color");
+    boxes[i].addEventListener("click", () => {
+        let nodeStyle = window.getComputedStyle(boxes[i]);
 
-    body.style.setProperty("background-color", backgroundColor);
-    if (backgroundColor === `rgb(16, 37, 66)`) {
-      body.style.color = "white";
-    } else {
-      body.style.color = "black";
-    }
-  });
+        let backgroundColor = nodeStyle.getPropertyValue("background-color");
+
+        body.style.setProperty("background-color", backgroundColor);
+
+        if (backgroundColor === `rgb(16, 37, 66)`) {
+            body.style.color = "white";
+        } else {
+            body.style.color = "black";
+        }
+    });
 }

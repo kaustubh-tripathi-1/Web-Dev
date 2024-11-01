@@ -177,8 +177,8 @@ function rotate(arr, start, end) {
   }
 } */
 
-let marks = [54, 96, 76, 49, 86];
-let i;
+/* let marks = [54, 96, 76, 49, 86];
+let i; */
 
 //@ Use of Slice Splice, Shift, Unshift, Push, Pop
 /* console.log(marks.splice(1, 3, 32, 43));
