@@ -528,7 +528,7 @@ async function getDataAgain() {
     await getData(3);
 })(); */
 
-//@ setTimeout(), clearTiemout() and setInterval(), clearInterval() function funcitoning
+//@ setTimeout(), clearTiemout() and setInterval(), clearInterval() functions funcitoning
 
 /* const displayDate = () => {
     let date = new Date();
