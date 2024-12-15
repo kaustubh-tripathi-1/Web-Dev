@@ -565,7 +565,7 @@ let response;
 async function github() {
     try {                               //& In async-await, we use try, catch block to handle with errors as we used to do with .then() and .catch() with Promises
         response = await fetch(url);
-        js = await response.json(); //& To convert the object into JSON, can use .json() but as this task also takes some time, we use await here too.
+        js = await response.json(); //& To convert the object into JSON, can use .json() but as this task is also async, we use await here too.
         console.log(response);
         console.log(js);
         console.log(typeof response);
