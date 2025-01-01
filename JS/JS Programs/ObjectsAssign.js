@@ -25,7 +25,7 @@ console.log(person); */
 	lastName: `Tripathi`,
 	age: 25,
 	city: `Ghaziabad`,
-	fullName: function fname() {
+	fullName: function () {
 		console.log(` My full name is ${this.firstName} ${this.lastName}.`);
 	},
 	agein10: function () {
@@ -84,40 +84,40 @@ for (let key in person) {
 //@ Question 6
 
 /* const students = [
-	{
-		rollNo: 1,
-		firstName: `Kaustubh`,
-		lastName: `Tripathi`,
-		age: 25,
-		city: `Ghaziabad`,
-		grade: `9`,
-	},
-	{
-		rollNo: 2,
-		firstName: `Nakshatra`,
-		lastName: `Gupta`,
-		age: 25,
-		city: `Ghaziabad`,
-		grade: `9`,
-	},
+    {
+        rollNo: 1,
+        firstName: `Kaustubh`,
+        lastName: `Tripathi`,
+        age: 25,
+        city: `Ghaziabad`,
+        grade: `9`,
+    },
+    {
+        rollNo: 2,
+        firstName: `Nakshatra`,
+        lastName: `Gupta`,
+        age: 25,
+        city: `Ghaziabad`,
+        grade: `9`,
+    },
 ];
 
 function printProperty(students) {
-	for (const student of students) {
-		console.log(`Name - ${student.firstName}\nGrade - ${student.grade}`);
-	}
-	for (let student = 0; student < students.length; student++) {
-		console.log(
-			`Name - ${students[student].firstName}\nGrade - ${students[student].grade}`
-		);
-	}
-	for (let student = 0; student < students.length; student++) {
-		console.log(
-			`Name - ${students[student][`firstName`]}\nGrade - ${
-				students[student][`grade`]
-			}`
-		);
-	}
+    for (const student of students) {
+        console.log(`Name - ${student.firstName}\nGrade - ${student.grade}`);
+    }
+    for (let student = 0; student < students.length; student++) {
+        console.log(
+            `Name - ${students[student].firstName}\nGrade - ${students[student].grade}`
+        );
+    }
+    for (let student = 0; student < students.length; student++) {
+        console.log(
+            `Name - ${students[student][`firstName`]}\nGrade - ${
+                students[student][`grade`]
+            }`
+        );
+    }
 }
 
 printProperty(students); */
@@ -524,7 +524,7 @@ console.log(person); */
 
 //@ Question 17
 
-const inventory = {
+/* const inventory = {
     apple: 5,
     banana: 10,
     orange: 8,
@@ -542,4 +542,4 @@ let keyValueArray = Object.entries(inventory);
 
 for (let [key, value] of keyValueArray) {
     console.log(key, value);
-}
+} */
