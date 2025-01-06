@@ -18,7 +18,7 @@ Welcome to my Web Development Learning repository! 🚀 This repo serves as a co
 | `/HTML`               | Basic HTML examples, semantic tags, and best practices.                    |
 | `/CSS`                | Styling exercises including flexbox, grid, and animations.                 |
 | `/JavaScript`         | Examples and mini-projects exploring core JS concepts and the DOM.         |
-| `/JavaScript/Projects`| Small projects combining all technologies (e.g., to-do apps, landing pages).|
+| `/JavaScript/Projects`| Small projects combining all technologies.|
 | `/React`              | React projects including stateful components, hooks, and single-page apps. |
 
 ---
