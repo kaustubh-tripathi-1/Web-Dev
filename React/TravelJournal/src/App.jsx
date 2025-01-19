@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import Header from './Components/Header.jsx'
-import Main from './Components/Main.jsx'
+import { useState } from "react";
+import Header from "./Components/Header.jsx";
+import Main from "./Components/Main.jsx";
 
 export default function App() {
-  return (
-    <>
-        <Header/>
-        <Main/>
-    </>
-  )
+    return (
+        <>
+            <Header />
+            <Main />
+        </>
+    );
 }
