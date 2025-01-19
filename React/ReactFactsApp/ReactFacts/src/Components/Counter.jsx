@@ -5,14 +5,20 @@ export default function Counter() {
     const [count, setCount] = useState(0);
 
     const increment = () => {
-        count >= 20 ? setCount(20) : setCount((count) => count+1);
-        console.log(count);
+        setCount(prevCount => {
+            const newCount = prevCount >= 20 ? 20 : prevCount+1;
+            console.log(`Incremented correctly - ${newCount}`);
+            return newCount;
+        });
         
     }
     
     const decrement = () => {
-        count <= 0 ? setCount(0) : setCount((count) => count-1);
-        console.log(count);
+        setCount(prevCount => {
+            const newCount = prevCount <= 0 ? 0 : prevCount - 1;
+            console.log(`Decremented correctly - ${newCount}`);
+            return newCount;
+        });
     }
     
     return (
