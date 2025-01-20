@@ -5,8 +5,8 @@ export default function Card(props) {
         <div className="flex justify-center h-2/6 w-full p-2">
             <div className="h-44 w-32 ">
                 <img
-                    src={props.img}
-                    alt={props.alt}
+                    src={props.img.src}
+                    alt={props.img.alt}
                     className="h-full w-full object-cover rounded-xl"
                 />
             </div>
@@ -23,6 +23,7 @@ export default function Card(props) {
                     <a
                         href={props.googleMapsLink}
                         className="text-xxs text-gray-400 underline"
+                        target="_blank"
                     >
                         View on Google Maps
                     </a>
