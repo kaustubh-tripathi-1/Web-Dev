@@ -18,23 +18,6 @@ export default function Practice() {
 
     function addFavoriteThing() {
         setmyFavouriteThings((prevThings) => {
-            /* if (prevThings.length === 0) {
-                let [firstElement] = allFavoriteThings;
-                return firstElement;
-            }
-
-            if (prevThings.length === allFavoriteThings.length) {
-                return prevThings;
-            }
-
-            const index = allFavoriteThings.indexOf(
-                prevThings.find(prevThings.length - 1)
-            );
-
-            if (index < myFavouriteThings.length - 1) {
-                return [...prevThings, allFavoriteThings[index + 1]];
-            } */
-
             if (prevThings.length < allFavoriteThings.length) {
                 return [...prevThings, allFavoriteThings.at(prevThings.length)];
             } else {
