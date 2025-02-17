@@ -30,7 +30,8 @@ export default function FormPractice() {
                 // action={(formData) => signUp(formData)}
                 onSubmit={(event) => {
                     event.preventDefault();
-                    signUp(new FormData(event.target));
+                    signUp(new FormData(event.currentTarget));
+                    event.currentTarget.reset();
                 }}
                 className="h-5/6 w-3/6 flex flex-col justify-start items-start"
             >
