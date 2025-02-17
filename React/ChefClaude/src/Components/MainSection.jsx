@@ -6,22 +6,22 @@ export default function MainSection() {
     /**
      * @param {Event} e
      */
-    function handleSubmit(e) {
+    /* function handleSubmit(e) {
         e.preventDefault();
 
         //$ Using DOM methods
-        /* const formChildren = e.target.children;
-        const newIngredient = formChildren.ingredient.value;
+        // const formChildren = e.target.children;
+        // const newIngredient = formChildren.ingredient.value;
 
-        if (
-            typeof newIngredient === `string` &&
-            newIngredient !== `` &&
-            newIngredient !== ` `
-        ) {
-            const modIngredient =
-                newIngredient[0].toUpperCase() + newIngredient.slice(1);
-            ingredients.push(modIngredient);
-        } */
+        // if (
+        //     typeof newIngredient === `string` &&
+        //     newIngredient !== `` &&
+        //     newIngredient !== ` `
+        // ) {
+        //     const modIngredient =
+        //         newIngredient[0].toUpperCase() + newIngredient.slice(1);
+        //     ingredients.push(modIngredient);
+        // }
 
         //$ Using FormData constructor
         const form = e.currentTarget;
@@ -32,7 +32,7 @@ export default function MainSection() {
             typeof newIngredient === `string` &&
             newIngredient.trim() !== `` &&
             !ingredients.some(
-                (item) => item.toLowerCase() === newIngredient.toLowerCase()
+                (item) => item === newIngredient.trim().toLowerCase()
             )
         ) {
             let modIngredient = newIngredient.trim().toLowerCase();
@@ -44,8 +44,27 @@ export default function MainSection() {
         }
 
         console.log(ingredients);
-        e.currentTarget.reset();
+        form.reset();
+    } */
+
+    function addIngredient(formData) {
+        let newIngredient = formData.get("ingredient");
+
+        if (
+            typeof newIngredient === `string` &&
+            newIngredient.trim() !== `` &&
+            !ingredients.some(
+                (item) => item === newIngredient.trim().toLowerCase()
+            )
+        ) {
+            newIngredient = newIngredient.trim().toLowerCase();
+            setIngredients((prevIngredients) => [
+                ...prevIngredients,
+                newIngredient,
+            ]);
+        }
     }
+
     const listOfIngredients = ingredients.map((ingredient, index) => (
         <li key={index}>{ingredient[0].toUpperCase() + ingredient.slice(1)}</li>
     ));
@@ -55,7 +74,12 @@ export default function MainSection() {
             <form
                 className="w-screen h-2/6 flex justify-center items-center gap-4"
                 name="ingredient-adder"
-                onSubmit={handleSubmit}
+                onSubmit={(event) => {
+                    event.preventDefault();
+                    addIngredient(new FormData(event.currentTarget));
+                    event.currentTarget.reset();
+                }} //$ Using event handler with event object for client side form handling
+                // action={addIngredient}   //$ Primarily use it when the form data is sent to the server
             >
                 <label htmlFor="ingredient">Enter Ingredient : </label>
                 <input

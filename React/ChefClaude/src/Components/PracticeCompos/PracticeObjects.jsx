@@ -1,7 +1,7 @@
 import { useState } from "react";
-import avatar from "../assets/ObjectStateImages/user.png";
-import starFilled from "../assets/ObjectStateImages/star-filled.png";
-import starEmpty from "../assets/ObjectStateImages/star-empty.png";
+import avatar from "../../assets/ObjectStateImages/user.png";
+import starFilled from "../../assets/ObjectStateImages/star-filled.png";
+import starEmpty from "../../assets/ObjectStateImages/star-empty.png";
 
 export default function PracticeObjects() {
     const [contact, setContact] = useState({

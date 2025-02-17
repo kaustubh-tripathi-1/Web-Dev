@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Header from "./Components/Header";
 import MainSection from "./Components/MainSection";
-import Counter from "./Components/Counter";
-import Practice from "./Components/Practice";
-import PracticeObjects from "./Components/PracticeObjects";
+import Counter from "./Components/PracticeCompos/Counter";
+import Practice from "./Components/PracticeCompos/Practice";
+import PracticeObjects from "./Components/PracticeCompos/PracticeObjects";
+import FormPractice from "./Components/PracticeCompos/FormPractice";
 
 export default function App() {
     return (
@@ -12,7 +13,8 @@ export default function App() {
             <MainSection /> */}
             {/* <Counter /> */}
             {/* <Practice /> */}
-            <PracticeObjects />
+            {/* <PracticeObjects /> */}
+            {/* <FormPractice /> */}
         </>
     );
 }
