@@ -27,5 +27,5 @@ export default [
     {
         id: 6,
         punchline: "Lol",
-    }
+    },
 ];
