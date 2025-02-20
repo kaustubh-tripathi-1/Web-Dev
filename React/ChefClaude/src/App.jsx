@@ -30,7 +30,7 @@ export default function App() {
     } */
 
     //$ Sound Pads code
-    const [pads, setPads] = useState(padsData);
+    // const [pads, setPads] = useState(padsData);
 
     /* function toggle(id) {
         setPads((prevPads) => {
@@ -76,8 +76,8 @@ export default function App() {
 
     return (
         <>
-            {/* <Header />
-                        <MainSection /> */}
+            <Header />
+            <MainSection />
             {/* <Counter /> */}
             {/* <Practice /> */}
             {/* <PracticeObjects /> */}
