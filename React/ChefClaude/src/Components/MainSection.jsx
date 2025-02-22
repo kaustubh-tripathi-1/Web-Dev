@@ -1,8 +1,11 @@
 import { useState } from "react";
 import IngredientsList from "./IngredientsList.jsx";
+import { getRecipeFromMistral } from "./ai.js";
 
 export default function MainSection() {
     const [ingredients, setIngredients] = useState([]);
+
+    // const API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
 
     /**
      * @param {Event} e
@@ -66,10 +69,14 @@ export default function MainSection() {
         }
     }
 
-    const [recipeShown, setRecipeShown] = useState(false);
+    const [recipeFromAI, setRecipeFromAI] = useState("");
 
-    function getRecipe() {
-        setRecipeShown((prevRecipeShown) => !prevRecipeShown);
+    async function getRecipe() {
+        const recipeMardown = await getRecipeFromMistral(ingredients);
+
+        console.log(recipeMardown);
+
+        setRecipeFromAI(recipeMardown);
     }
 
     return (
@@ -102,7 +109,7 @@ export default function MainSection() {
             <IngredientsList
                 ingredients={ingredients}
                 getRecipe={getRecipe}
-                recipeShown={recipeShown}
+                recipeFromAI={recipeFromAI}
             />
         </main>
     );

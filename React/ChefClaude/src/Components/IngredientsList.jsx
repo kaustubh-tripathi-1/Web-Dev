@@ -3,7 +3,7 @@ import ClaudeRecipe from "./ClaudeRecipe.jsx";
 export default function IngredientsList({
     ingredients,
     getRecipe,
-    recipeShown,
+    recipeFromAI,
 }) {
     const listOfIngredients = ingredients.map((ingredient, index) => (
         <li key={index} className="text-gray-600 marker:text-indigo-900">
@@ -36,11 +36,11 @@ export default function IngredientsList({
                         className="h-3/6 w-30 cursor-pointer rounded-lg bg-[#D17557] p-2 text-white"
                         onClick={getRecipe}
                     >
-                        {recipeShown ? "Hide Recipe" : "Get a recipe"}
+                        Get a recipe
                     </button>
                 </div>
             )}
-            {recipeShown && <ClaudeRecipe />}
+            {recipeFromAI && <ClaudeRecipe recipeFromAI={recipeFromAI} />}
         </section>
     );
 }

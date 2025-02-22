@@ -1,7 +1,7 @@
 import { HfInference } from "@huggingface/inference";
 
 const SYSTEM_PROMPT = `
-You are an chef that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page. Keep the spellings correct too
+You are an chef that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page. And please keep the markdown well formatted with headings as headings, recipe name as a h3 heading and all that. Keep the spellings correct too
 `;
 
 const hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN);
