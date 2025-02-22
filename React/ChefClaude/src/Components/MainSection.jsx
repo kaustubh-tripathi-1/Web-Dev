@@ -5,103 +5,52 @@ import { getRecipeFromMistral } from "./ai.js";
 export default function MainSection() {
     const [ingredients, setIngredients] = useState([]);
 
-    // const API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
-
-    /**
-     * @param {Event} e
-     */
-    /* function handleSubmit(e) {
-        e.preventDefault();
-
-        //$ Using DOM methods
-        // const formChildren = e.target.children;
-        // const newIngredient = formChildren.ingredient.value;
-
-        // if (
-        //     typeof newIngredient === `string` &&
-        //     newIngredient !== `` &&
-        //     newIngredient !== ` `
-        // ) {
-        //     const modIngredient =
-        //         newIngredient[0].toUpperCase() + newIngredient.slice(1);
-        //     ingredients.push(modIngredient);
-        // }
-
-        //$ Using FormData constructor
-        const form = e.currentTarget;
-        const formData = new FormData(form);
-        const newIngredient = formData.get(`ingredient`);
-
-        if (
-            typeof newIngredient === `string` &&
-            newIngredient.trim() !== `` &&
-            !ingredients.some(
-                (item) => item === newIngredient.trim().toLowerCase()
-            )
-        ) {
-            let modIngredient = newIngredient.trim().toLowerCase();
-
-            setIngredients((prevIngredients) => [
-                ...prevIngredients,
-                modIngredient,
-            ]);
-        }
-
-        console.log(ingredients);
-        form.reset();
-    } */
+    const [recipeFromAI, setRecipeFromAI] = useState("");
 
     function addIngredient(formData) {
         let newIngredient = formData.get("ingredient");
-
         if (
-            typeof newIngredient === `string` &&
-            newIngredient.trim() !== `` &&
-            !ingredients.some(
-                (item) => item === newIngredient.trim().toLowerCase(),
-            )
+            typeof newIngredient === "string" &&
+            newIngredient.trim() !== "" &&
+            !ingredients.includes(newIngredient.trim().toLowerCase())
         ) {
-            newIngredient = newIngredient.trim().toLowerCase();
-            setIngredients((prevIngredients) => [
-                ...prevIngredients,
-                newIngredient,
+            setIngredients([
+                ...ingredients,
+                newIngredient.trim().toLowerCase(),
             ]);
         }
     }
 
-    const [recipeFromAI, setRecipeFromAI] = useState("");
-
     async function getRecipe() {
-        const recipeMardown = await getRecipeFromMistral(ingredients);
+        const recipeMarkdown = await getRecipeFromMistral(ingredients);
+        console.log(recipeMarkdown);
 
-        console.log(recipeMardown);
-
-        setRecipeFromAI(recipeMardown);
+        setRecipeFromAI(recipeMarkdown);
     }
 
     return (
-        <main className="h-fit w-full">
+        <main className="h-fit w-full p-6">
             <form
-                className="flex h-fit w-full items-center justify-center gap-4 p-10"
-                name="ingredient-adder"
+                className="mx-auto flex w-[90%] transform flex-wrap items-center justify-center gap-4 rounded-xl bg-white p-6 shadow-lg transition-transform hover:scale-105"
                 onSubmit={(event) => {
                     event.preventDefault();
                     addIngredient(new FormData(event.currentTarget));
                     event.currentTarget.reset();
-                }} //$ Using event handler with event object for client side form handling
-                // action={addIngredient}   //$ Primarily use it when the form data is sent to the server
+                }}
             >
-                <label htmlFor="ingredient">Enter Ingredient : </label>
+                <label htmlFor="ingredient" className="text-lg font-medium">
+                    Enter Ingredient:
+                </label>
                 <input
                     type="text"
                     placeholder="e.g. oregano"
-                    className="h-10 w-[40%] rounded-lg border-1 border-gray-300 bg-white p-2"
+                    className="h-10 w-40 rounded-lg border border-gray-300 p-2 sm:w-60 md:w-80"
                     name="ingredient"
                     id="ingredient"
                 />
                 <button
                     type="submit"
-                    className="h-10 w-50 cursor-pointer rounded-lg bg-gray-900 text-sm text-gray-200 before:mr-1 before:content-['+']"
+                    className="h-10 w-40 cursor-pointer rounded-lg bg-gray-950 font-bold text-white shadow-md transition before:mr-1 before:content-['+'] hover:bg-gray-800 focus:bg-gray-800 active:scale-95"
                 >
                     Add Ingredient
                 </button>

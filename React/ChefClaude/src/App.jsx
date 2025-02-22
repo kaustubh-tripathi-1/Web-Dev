@@ -75,7 +75,7 @@ export default function App() {
     }); */
 
     return (
-        <>
+        <div className="flex min-h-screen flex-col items-center">
             <Header />
             <MainSection />
             {/* <Counter /> */}
@@ -100,6 +100,6 @@ export default function App() {
                     Turn off all buttons
                 </button>
             </main> */}
-        </>
+        </div>
     );
 }

@@ -5,7 +5,7 @@ import typography from "@tailwindcss/typography";
 
 // https://vite.dev/config/
 export default defineConfig({
-    plugins: [react(), tailwindcss(), typography()],
+    plugins: [react(), tailwindcss({ plugins: [typography] })],
     // server: {
     //     proxy: {
     //         "/api/recipe": {
