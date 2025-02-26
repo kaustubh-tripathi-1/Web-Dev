@@ -22,8 +22,8 @@ export default function FormPractice() {
     }
 
     return (
-        <section className="h-full w-full bg-sky-400 flex flex-col items-center">
-            <h1 className="w-2/6 mt-4 text-4xl text-center h-15 font-bold ">
+        <section className="flex h-full w-full flex-col items-center bg-sky-400">
+            <h1 className="mt-4 h-15 w-2/6 text-center text-4xl font-bold">
                 Signup form
             </h1>
             <form
@@ -33,9 +33,9 @@ export default function FormPractice() {
                     signUp(new FormData(event.currentTarget));
                     event.currentTarget.reset();
                 }}
-                className="h-5/6 w-3/6 flex flex-col justify-start items-start"
+                className="flex h-5/6 w-3/6 flex-col items-start justify-start"
             >
-                <label htmlFor="email" className="w-full h-fit text-2xl">
+                <label htmlFor="email" className="h-fit w-full text-2xl">
                     Email:
                 </label>
                 <input
@@ -45,10 +45,10 @@ export default function FormPractice() {
                     placeholder="joe@schmoe.com"
                     defaultValue="joe@schmoe.com"
                     autoComplete="on"
-                    className="w-full h-10 text-lg text-black bg-white placeholder:text-gray-700 rounded-2xl pl-3 mt-2 mb-2"
+                    className="mt-2 mb-2 h-10 w-full rounded-2xl bg-white pl-3 text-lg text-black placeholder:text-gray-700"
                 />
 
-                <label htmlFor="password" className="w-full h-fit text-2xl">
+                <label htmlFor="password" className="h-fit w-full text-2xl">
                     Password:
                 </label>
                 <input
@@ -57,21 +57,21 @@ export default function FormPractice() {
                     name="password"
                     defaultValue="pass123"
                     autoComplete="current-password"
-                    className="w-full h-10 text-lg text-black bg-white rounded-2xl pl-3 mt-2 mb-2"
+                    className="mt-2 mb-2 h-10 w-full rounded-2xl bg-white pl-3 text-lg text-black"
                 />
 
-                <label htmlFor="description" className="w-full h-fit text-2xl">
+                <label htmlFor="description" className="h-fit w-full text-2xl">
                     Description:
                 </label>
                 <textarea
                     id="description"
                     name="description"
                     defaultValue="This is a description"
-                    className="w-full resize-none mt-4 mb-4 bg-white p-2 outline-none focus:border-2 focus:border-blue-700"
+                    className="mt-4 mb-4 w-full resize-none bg-white p-2 outline-none focus:border-2 focus:border-blue-700"
                 ></textarea>
 
-                <fieldset className="w-full mt-4 mb-4">
-                    <legend className="w-full h-fit text-2xl mb-2">
+                <fieldset className="mt-4 mb-4 w-full">
+                    <legend className="mb-2 h-fit w-full text-2xl">
                         Employment Status:
                     </legend>
                     <label className="mr-2">
@@ -84,20 +84,20 @@ export default function FormPractice() {
                         />
                         Unemployed
                     </label>
-                    <label className="ml-2 mr-2">
+                    <label className="mr-2 ml-2">
                         <input
                             type="radio"
                             name="employmentStatus"
-                            className="ml-2 mr-2"
+                            className="mr-2 ml-2"
                             value="partTime"
                         />
                         Part-time
                     </label>
-                    <label className="ml-2 mr-2">
+                    <label className="mr-2 ml-2">
                         <input
                             type="radio"
                             name="employmentStatus"
-                            className="ml-2 mr-2"
+                            className="mr-2 ml-2"
                             value="fullTime"
                             defaultChecked
                         />
@@ -106,7 +106,7 @@ export default function FormPractice() {
                 </fieldset>
 
                 <fieldset className="mb-4">
-                    <legend className="w-full h-fit text-2xl mb-2">
+                    <legend className="mb-2 h-fit w-full text-2xl">
                         Languages you know :
                     </legend>
                     <input
@@ -124,7 +124,7 @@ export default function FormPractice() {
                         name="languages"
                         id="c++"
                         value="c++"
-                        className="ml-2 mr-2"
+                        className="mr-2 ml-2"
                     />
                     <label htmlFor="c++">C++</label>
                     <input
@@ -132,7 +132,7 @@ export default function FormPractice() {
                         name="languages"
                         id="java"
                         value="java"
-                        className="ml-2 mr-2"
+                        className="mr-2 ml-2"
                     />
                     <label htmlFor="java">Java</label>
                     <input
@@ -140,7 +140,7 @@ export default function FormPractice() {
                         name="languages"
                         id="python"
                         value="python"
-                        className="ml-2 mr-2"
+                        className="mr-2 ml-2"
                     />
                     <label htmlFor="python">Python</label>
                     <input
@@ -148,14 +148,14 @@ export default function FormPractice() {
                         name="languages"
                         id="javascript"
                         value="javascript"
-                        className="ml-2 mr-2"
+                        className="mr-2 ml-2"
                     />
                     <label className="mr-2" htmlFor="javascript">
                         Javascript
                     </label>
                 </fieldset>
 
-                <button className="w-full h-10 rounded-2xl bg-white border-2 border-emerald-700 hover:bg-blue-700 cursor-pointer text-lg text-center">
+                <button className="h-10 w-full cursor-pointer rounded-2xl border-2 border-emerald-700 bg-white text-center text-lg hover:bg-blue-700">
                     Submit
                 </button>
             </form>
