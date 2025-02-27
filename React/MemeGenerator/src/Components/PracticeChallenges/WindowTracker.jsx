@@ -15,7 +15,7 @@ export default function WindowTracker() {
         return () => {
             window.removeEventListener(`resize`, handleResize);
         };
-    }, [width]);
+    }, [width, height]);
 
     return (
         <>
