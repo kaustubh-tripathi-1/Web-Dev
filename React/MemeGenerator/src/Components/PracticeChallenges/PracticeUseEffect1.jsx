@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Practice() {
+export default function PracticeUseEffect1() {
     const [starWarsData, setStarWarsData] = useState("");
     const [count, setCount] = useState(1);
 
