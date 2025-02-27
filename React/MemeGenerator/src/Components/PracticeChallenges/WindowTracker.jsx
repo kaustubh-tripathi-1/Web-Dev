@@ -9,10 +9,12 @@ export default function WindowTracker() {
             setWidth(window.innerWidth);
             setHeight(window.innerHeight);
             // console.log(window.innerWidth);
+            console.log(`Resized`);
         }
         window.addEventListener(`resize`, handleResize);
 
         return () => {
+            console.log(`Cleaning up...`);
             window.removeEventListener(`resize`, handleResize);
         };
     }, []);
