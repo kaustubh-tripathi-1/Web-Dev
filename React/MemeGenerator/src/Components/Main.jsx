@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export default function Main() {
     const [meme, setMeme] = useState({
@@ -8,6 +8,12 @@ export default function Main() {
     });
 
     const [allMemes, setAllMemes] = useState([]);
+
+    function getRandomMeme() {
+        // if (allMemes.length === 0) return;
+        const randomIndex = Math.floor(Math.random() * allMemes.length);
+        setMeme(allMemes[randomIndex]);
+    }
 
     async function fetchMemeData() {
         try {
@@ -22,6 +28,8 @@ export default function Main() {
             });
 
             setAllMemes(newMemesData);
+            // console.log(newMemesData);
+            // console.log(allMemes);
         } catch (error) {
             console.error(error);
         }
@@ -30,6 +38,12 @@ export default function Main() {
     useEffect(() => {
         fetchMemeData();
     }, []);
+
+    useEffect(() => {
+        if (allMemes.length > 0) {
+            getRandomMeme();
+        }
+    }, [allMemes]);
 
     /** Handles the `onChange` event on input of Top text
      * @param {Event} event object
@@ -94,12 +108,13 @@ export default function Main() {
             </div>
             <button
                 type="button"
-                className="w-3/6 h-1/12 self-center bg-gradient-to-r from-purple-800 via-purple-700 to-purple-500 text-white rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-indigo-900 hover:via-blue-800 hover:to-blue-500"
+                className="w-80 h-1/12 self-center bg-gradient-to-r from-purple-800 via-purple-700 to-purple-500 text-white rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-indigo-900 hover:via-blue-800 hover:to-blue-500"
+                onClick={getRandomMeme}
             >
                 Get a new meme image
             </button>
             <div className="w-full h-4/6 flex place-content-center relative">
-                <img src={meme.imgUrl} alt="meme image" className="w-130" />
+                <img src={meme?.url} alt={meme?.name} className="w-auto" />
                 <span className="absolute top-4 uppercase text-white text-3xl font-extrabold font-[impact] [text-shadow:_2px_2px_0_#000_,_-2px_-2px_0_#000_,_2px_-2px_0_#000_,_-2px_2px_0_#000_,_0_2px_0_#000_,_2px_0_0_#000_,_0_-2px_0_#000_,_-2px_0_0_#000_,_2px_2px_5px_#000] tracking-wide cursor-default select-none">
                     {meme.topText}
                 </span>
