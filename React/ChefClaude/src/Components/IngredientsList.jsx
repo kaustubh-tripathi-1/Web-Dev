@@ -4,12 +4,15 @@ export default function IngredientsList({
     ingredients,
     getRecipe,
     recipeFromAI,
+    ref,
 }) {
     const listOfIngredients = ingredients.map((ingredient, index) => (
         <li key={index} className="animate-fadeIn">
             <em>{ingredient[0].toUpperCase() + ingredient.slice(1)}</em>
         </li>
     ));
+
+    console.log(ref);
 
     return (
         <section className="flex w-full flex-col items-center p-6">
@@ -22,7 +25,10 @@ export default function IngredientsList({
                 {listOfIngredients}
             </ul>
             {ingredients.length >= 4 && (
-                <div className="mt-6 flex flex-col items-center gap-2 rounded-xl bg-yellow-200 p-5 shadow-md">
+                <div
+                    className="mt-6 flex flex-col items-center gap-2 rounded-xl bg-yellow-200 p-5 shadow-md"
+                    ref={ref}
+                >
                     <h3 className="text-xl font-semibold">
                         Ready for a recipe?
                     </h3>
