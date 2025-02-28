@@ -7,10 +7,10 @@ import PracticeUseEffect2 from "./Components/PracticeChallenges/PracticeUseEffec
 export default function App() {
     return (
         <>
-            {/* <Header />
-            <Main /> */}
+            <Header />
+            <Main />
             {/* <PracticeUseEffect1 /> */}
-            <PracticeUseEffect2 />
+            {/* <PracticeUseEffect2 /> */}
         </>
     );
 }
