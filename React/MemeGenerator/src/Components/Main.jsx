@@ -35,8 +35,10 @@ export default function Main() {
         }
     }
 
+    //$ Using async/await
     useEffect(() => {
-        fetchMemeData();
+        const promise = fetchMemeData();
+        // console.log(promise);
     }, []);
 
     useEffect(() => {
@@ -44,6 +46,22 @@ export default function Main() {
             getRandomMeme();
         }
     }, [allMemes]);
+
+    //$ Promise chaining method
+    /* useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then((res) => res.json())
+            .then((data) => {
+                const newMemesData = data.data.memes.map((data) => {
+                    return { ...data, topText: ``, bottomText: `` };
+                });
+                setAllMemes(newMemesData);
+            })
+            .then(getRandomMeme())
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []); */
 
     /** Handles the `onChange` event on input of Top text
      * @param {Event} event object
@@ -115,8 +133,8 @@ export default function Main() {
             </button>
             <div className="w-full h-4/6 flex place-content-center relative">
                 <img
-                    src={meme?.url}
-                    alt={meme?.name}
+                    src={meme.url /* || meme.imgUrl */}
+                    alt={meme.name}
                     className="max-w-[100%] h-auto"
                 />
                 <span className="absolute top-4 uppercase text-white text-3xl font-extrabold font-[impact] [text-shadow:_2px_2px_0_#000_,_-2px_-2px_0_#000_,_2px_-2px_0_#000_,_-2px_2px_0_#000_,_0_2px_0_#000_,_2px_0_0_#000_,_0_-2px_0_#000_,_-2px_0_0_#000_,_2px_2px_5px_#000] tracking-wide cursor-default select-none">
