@@ -3,17 +3,19 @@ import { TypeAnimation } from "react-type-animation";
 import { useState } from "react";
 import "./ClaudeRecipe.css";
 
-export default function ClaudeRecipe({ recipeFromAI }) {
+export default function ClaudeRecipe({ recipeFromAI, ref }) {
     const [showMarkdown, setShowMarkdown] = useState(false);
 
     return (
         <section className="suggested-recipe-container prose mx-auto mt-6 w-[90%] rounded-lg bg-blue-50 p-8 text-blue-900 shadow-lg">
-            <h2 className="mb-4 text-2xl font-bold">Chef Claude Recommends:</h2>
+            <h2 className="mb-4 text-2xl font-bold" ref={ref}>
+                Chef Claude Recommends:
+            </h2>
             <article
                 className="suggested-recipe-article prose"
                 aria-live="polite"
             >
-                {!showMarkdown ? (
+                {/* {!showMarkdown ? (
                     <TypeAnimation
                         sequence={[
                             "Generating recipe...",
@@ -25,7 +27,8 @@ export default function ClaudeRecipe({ recipeFromAI }) {
                     />
                 ) : (
                     <Markdown>{recipeFromAI}</Markdown>
-                )}
+                )} */}
+                <Markdown>{recipeFromAI}</Markdown>
             </article>
         </section>
     );
