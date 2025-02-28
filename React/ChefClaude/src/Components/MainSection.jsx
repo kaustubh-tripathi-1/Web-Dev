@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import IngredientsList from "./IngredientsList.jsx";
 import { getRecipeFromMistral } from "./ai.js";
 
@@ -27,6 +27,13 @@ export default function MainSection() {
 
         setRecipeFromAI(recipeMarkdown);
     }
+
+    const recipeSectionRef = useRef(null);
+    useEffect(() => {
+        if (recipeFromAI && recipeSectionRef.current) {
+            recipeSectionRef.current?.scrollIntoView();
+        }
+    }, [recipeFromAI]);
 
     return (
         <main className="h-fit w-full p-6">
@@ -59,6 +66,7 @@ export default function MainSection() {
                 ingredients={ingredients}
                 getRecipe={getRecipe}
                 recipeFromAI={recipeFromAI}
+                ref={recipeSectionRef}
             />
         </main>
     );
