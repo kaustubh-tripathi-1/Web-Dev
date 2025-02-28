@@ -12,8 +12,6 @@ export default function IngredientsList({
         </li>
     ));
 
-    console.log(ref);
-
     return (
         <section className="flex w-full flex-col items-center p-6">
             {ingredients.length > 0 && (
@@ -40,11 +38,13 @@ export default function IngredientsList({
                         className="mt-2 cursor-pointer rounded-lg bg-[#D17557] px-4 py-2 text-white shadow-md transition hover:bg-green-700 focus:bg-green-700"
                         onClick={getRecipe}
                     >
-                        Get a Recipe
+                        {recipeFromAI ? `Get another Recipe` : `Get a Recipe`}
                     </button>
                 </div>
             )}
-            {recipeFromAI && <ClaudeRecipe recipeFromAI={recipeFromAI} />}
+            {recipeFromAI && (
+                <ClaudeRecipe recipeFromAI={recipeFromAI} ref={ref} />
+            )}
         </section>
     );
 }
