@@ -20,7 +20,7 @@ export default function ClaudeRecipe({ recipeFromAI }) {
                             1000, // Show "Generating recipe..." for 1 sec
                             () => setShowMarkdown(true), // Then show full markdown
                         ]}
-                        speed={99} // Super-fast effect
+                        speed={10} // Super-fast effect
                         cursor={false}
                     />
                 ) : (
