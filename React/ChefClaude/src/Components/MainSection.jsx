@@ -31,7 +31,9 @@ export default function MainSection() {
     const recipeSectionRef = useRef(null);
     useEffect(() => {
         if (recipeFromAI && recipeSectionRef.current) {
-            recipeSectionRef.current?.scrollIntoView();
+            recipeSectionRef.current?.scrollIntoView({
+                behavior: "smooth",
+            });
         }
     }, [recipeFromAI]);
 
