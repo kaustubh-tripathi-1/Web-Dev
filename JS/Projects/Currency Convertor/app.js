@@ -70,6 +70,9 @@ button.addEventListener(`click`, async (event) => {
 
     try {
         let response = await fetch(URL);
+        if (!response.ok) {
+            throw new Error(`Network response was not ok`);
+        }
 
         let responseJSON = await response.json();
 
@@ -78,10 +81,6 @@ button.addEventListener(`click`, async (event) => {
         msg.innerHTML = `${amountValue} ${fromCurrency.toUpperCase()} = ${(
             rate * amountValue
         ).toFixed(2)} ${toCurrency.toUpperCase()}`;
-
-        if (!response.ok) {
-            throw new Error(`Network response was not ok`);
-        }
     } catch (error) {
         msg.innerHTML = `Failed to fetch exchange rate. Try again later.`;
         console.error("Fetch error:", error);
