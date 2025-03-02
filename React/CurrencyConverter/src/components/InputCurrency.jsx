@@ -7,9 +7,12 @@ export default function InputCurrency(props) {
             <span className="text-gray-700 text-xl justify-self-end">
                 Currency Type
             </span>
-            <input className="" type="text" />
+            <input
+                className="h-5/6 w-9/6 px-2 bg-blue-200 hover:bg-blue-300 focus:bg-blue-300 self-center outline-none text-xl rounded-xl "
+                type="number"
+            />
             <select
-                className="bg-gray-200 w-4/12 h-8 self-end justify-self-end rounded-xl p-1"
+                className="bg-blue-200 w-4/12 h-5/6 hover:bg-blue-300 focus:bg-blue-300 self-center justify-self-end rounded-xl px-2 cursor-pointer outline-none"
                 name="currency"
                 id="currency"
             >
