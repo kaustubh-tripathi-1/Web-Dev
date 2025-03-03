@@ -17,8 +17,7 @@ export function useCurrencyInfo(currency) {
             try {
                 const response = await fetch(baseUrl);
 
-                console.log(response);
-
+                // console.log(response);
                 if (!response.ok) {
                     throw new Error(
                         `${response.status}, ${response.statusText}`
@@ -27,7 +26,11 @@ export function useCurrencyInfo(currency) {
 
                 const currencyJSON = await response.json();
 
-                console.log(currencyJSON[currency]);
+                if (!currencyJSON[currency]) {
+                    throw new Error("Base API returned invalid data");
+                }
+
+                // console.log(currencyJSON[currency]);
 
                 setCurrencyData(currencyJSON[currency]);
             } catch (error) {
@@ -43,6 +46,11 @@ export function useCurrencyInfo(currency) {
                     }
 
                     const currencyJSON = await response.json();
+                    if (!currencyJSON[currency]) {
+                        throw new Error("Fallback API returned invalid data");
+                    }
+
+                    console.log(fallbackUrl);
 
                     console.log(currencyJSON[currency]);
 
