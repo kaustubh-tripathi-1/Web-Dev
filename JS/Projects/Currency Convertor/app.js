@@ -49,12 +49,7 @@ button.addEventListener(`click`, async (event) => {
 
     let amountValue = amount.value;
 
-    if (
-        amountValue === `` ||
-        amountValue < 1 ||
-        typeof amountValue === `string` ||
-        isNaN(amountValue)
-    ) {
+    if (amountValue === `` || amountValue < 1 || isNaN(amountValue)) {
         amountValue = 1;
         amount.value = `1`;
     }
