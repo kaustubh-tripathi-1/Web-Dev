@@ -12,12 +12,11 @@ export function useCurrencyInfo(currency) {
     const fallbackUrl = `https://latest.currency-api.pages.dev/v1/currencies/${currency}.json`;
 
     useEffect(() => {
-        async function fetchCurrencyData(currency) {
+        async function fetchCurrencyData() {
             //$ API call of Base URL
             try {
                 const response = await fetch(baseUrl);
 
-                // console.log(response);
                 if (!response.ok) {
                     throw new Error(
                         `${response.status}, ${response.statusText}`
@@ -30,37 +29,37 @@ export function useCurrencyInfo(currency) {
                     throw new Error("Base API returned invalid data");
                 }
 
-                // console.log(currencyJSON[currency]);
-
                 setCurrencyData(currencyJSON[currency]);
-            } catch (error) {
+            } catch (primaryError) {
                 //$ API call of Fallback URL
                 try {
-                    const response = await fetch(fallbackUrl);
+                    const fallbackResponse = await fetch(fallbackUrl);
 
-                    if (!response.ok) {
-                        setError(true);
+                    if (!fallbackResponse.ok) {
+                        setError(
+                            `Failed to fetch data: ${primaryError.message}`
+                        );
+                        setCurrencyData(null);
                         throw new Error(
-                            `${response.status}, ${response.statusText}`
+                            `${fallbackResponse.status}, ${fallbackResponse.statusText}`
                         );
                     }
 
-                    const currencyJSON = await response.json();
-                    if (!currencyJSON[currency]) {
+                    const fallbackData = await fallbackResponse.json();
+                    if (!fallbackData[currency]) {
+                        setCurrencyData(null);
                         throw new Error("Fallback API returned invalid data");
                     }
 
-                    console.log(fallbackUrl);
-
-                    console.log(currencyJSON[currency]);
-
-                    setCurrencyData(currencyJSON[currency]);
-                } catch (error) {
-                    console.error(error);
+                    setCurrencyData(fallbackData[currency]);
+                } catch (fallbackError) {
+                    console.error(
+                        `Both APIs failed:" ${primaryError}, ${fallbackError}`
+                    );
                 }
             }
         }
-        fetchCurrencyData(currency);
+        fetchCurrencyData();
     }, [currency]);
 
     return [currencyData, error];
