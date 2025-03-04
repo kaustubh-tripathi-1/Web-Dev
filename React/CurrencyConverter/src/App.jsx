@@ -46,7 +46,18 @@ export default function App() {
     console.log(`re-rendered`);
 
     return (
-        <main className="min-h-screen w-full bg-[url(./assets/bgImages/17454.jpg)] bg-cover bg-no-repeat bg-center flex items-center justify-center p-4">
+        <main className="min-h-screen w-full bg-[url(./assets/bgImages/17454.jpg)] bg-cover bg-no-repeat bg-center flex flex-col items-center justify-evenly p-4">
+            {/* <h1 className="w-full h-20 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-white/10 backdrop-blur-md rounded-2xl shadow-lg flex justify-center items-center text-4xl font-extrabold"> */}
+            <h1
+                className="w-full h-20 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl 
+               bg-gradient-to-r from-blue-800 via-yellow-500 to-green-500 
+               bg-[length:200%_200%] animate-[bg-slide_3s_infinite] 
+               backdrop-blur-md rounded-2xl shadow-lg 
+               flex justify-center items-center 
+               text-4xl font-extrabold text-transparent bg-clip-text"
+            >
+                Currency Converter
+            </h1>
             <section className="w-full min-h-fit max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl p-6 sm:p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg flex flex-col gap-6">
                 <div className="w-full min-h-max transition-all duration-500 ease-in-out transform hover:scale-105 flex flex-col gap-6">
                     <InputCurrency
