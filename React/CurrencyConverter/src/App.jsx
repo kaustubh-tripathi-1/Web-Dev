@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCurrencyInfo } from "./hooks/useCurrencyInfo.js";
+import { useDebounce } from "./hooks/useDebounce.js";
 import InputCurrency from "./components/InputCurrency.jsx";
 import swapIcon from "./assets/sort.png";
 
@@ -18,7 +19,12 @@ export default function App() {
         }
     }, [currencyData]);
 
-    useEffect(() => {
+    //$ Add debounced values for amounts
+    const debouncedFromAmount = useDebounce(fromAmount, 300);
+    const debouncedToAmount = useDebounce(toAmount, 300);
+
+    //$ W/O debounced state
+    /* useEffect(() => {
         if (!currencyData) return;
 
         if (lastChanged === "from") {
@@ -34,7 +40,36 @@ export default function App() {
                 setFromAmount((toAmount / currencyData[toCurrency]).toFixed(2));
             }
         }
-    }, [currencyData, fromAmount, toAmount, toCurrency, lastChanged]);
+    }, [currencyData, fromAmount, toAmount, toCurrency, lastChanged]); */
+
+    //$ With debounced state
+    useEffect(() => {
+        if (!currencyData) return;
+
+        if (lastChanged === "from") {
+            if (debouncedFromAmount === "" || debouncedFromAmount < 0) {
+                setToAmount("");
+            } else {
+                setToAmount(
+                    (currencyData[toCurrency] * debouncedFromAmount).toFixed(2)
+                );
+            }
+        } else if (lastChanged === "to") {
+            if (debouncedToAmount === "" || debouncedToAmount < 0) {
+                setFromAmount("");
+            } else {
+                setFromAmount(
+                    (debouncedToAmount / currencyData[toCurrency]).toFixed(2)
+                );
+            }
+        }
+    }, [
+        currencyData,
+        debouncedFromAmount,
+        debouncedToAmount,
+        toCurrency,
+        lastChanged,
+    ]);
 
     function swapFromAndTo() {
         setFromCurrency(toCurrency);
