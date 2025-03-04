@@ -20,6 +20,7 @@ export function useCurrencyInfo(currency) {
             return;
         }
 
+        //& Memoizing this function is unnecessary as it will always be recreated when currency change
         async function fetchCurrencyData() {
             //$ API call of Base URL
             try {
@@ -45,9 +46,6 @@ export function useCurrencyInfo(currency) {
                     const fallbackResponse = await fetch(fallbackUrl);
 
                     if (!fallbackResponse.ok) {
-                        setError(
-                            `Failed to fetch data: ${primaryError.message}`
-                        );
                         setCurrencyData(null);
                         throw new Error(
                             `${fallbackResponse.status}, ${fallbackResponse.statusText}`
@@ -62,8 +60,11 @@ export function useCurrencyInfo(currency) {
                     cache[currency] = fallbackData[currency];
                     setCurrencyData(fallbackData[currency]);
                 } catch (fallbackError) {
+                    setError(
+                        `Both APIs failed: ${primaryError.message} | ${fallbackError.message}`
+                    );
                     console.error(
-                        `Both APIs failed:\nPrimary API Error: ${primaryError}\nFallback API Error: ${fallbackError}`
+                        `API errors:\nPrimary: ${primaryError}\nFallback: ${fallbackError}`
                     );
                 }
             }
