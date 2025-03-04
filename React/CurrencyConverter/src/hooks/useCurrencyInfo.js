@@ -6,14 +6,15 @@ export function useCurrencyInfo(currency) {
     const [currencyData, setCurrencyData] = useState(null);
     const [error, setError] = useState(null);
 
-    if (!currency) {
-        return [currencyData, error];
-    }
-
     const baseUrl = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${currency}.json`;
     const fallbackUrl = `https://latest.currency-api.pages.dev/v1/currencies/${currency}.json`;
 
     useEffect(() => {
+        if (!currency) {
+            setError(`Currency not provided. Please try again...`);
+            return [currencyData, error];
+        }
+
         if (cache[currency]) {
             setCurrencyData(cache[currency]);
             return;
