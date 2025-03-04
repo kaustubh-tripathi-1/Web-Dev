@@ -50,19 +50,19 @@ export default function InputCurrency({
 
     return (
         <div
-            className={`w-full h-5/12 p-3 bg-white grid grid-cols-2 grid-rows-2 justify-between rounded-xl ${className}`}
+            className={`w-full min-h-40 p-3 sm:p-4 bg-white/90 shadow-md grid grid-cols-2 grid-rows-2 justify-between rounded-xl $transition-all duration-300 ease-in-out hover:bg-white ${className}`}
         >
             <label
                 htmlFor={forLabel}
-                className="text-gray-700 text-xl justify-self-start"
+                className="text-gray-700 text-base sm:text-xl font-medium animate-fade-in sm:w-1/4"
             >
                 {forLabel === `from` ? "From" : "To"}
             </label>
-            <p className="text-gray-700 text-xl justify-self-end">
+            <p className="text-gray-700 text-base sm:text-xl font-medium  justify-self-end">
                 Currency Type
             </p>
             <input
-                className="h-5/6 w-9/6 px-2 bg-blue-200 hover:bg-blue-300 focus:bg-blue-300 self-center outline-none text-xl rounded-xl "
+                className="md:w-9/6 self-center w-full sm:w-7/6 h-10 sm:h-12 px-3 bg-blue-100 hover:bg-blue-200 focus:bg-blue-200 focus:ring-2 focus:ring-blue-400 outline-none text-base sm:text-xl rounded-lg transition-colors duration-200 ease-in-out"
                 type="number"
                 id={forLabel}
                 value={forLabel === `from` ? fromAmount : toAmount}
@@ -70,7 +70,7 @@ export default function InputCurrency({
             />
             {
                 <select
-                    className="bg-blue-200 w-4/12 h-5/6 hover:bg-blue-300 focus:bg-blue-300 self-center justify-self-end rounded-xl px-2 cursor-pointer outline-none"
+                    className="w-5/6 sm:w-5/12 h-10 sm:h-12 bg-blue-100 hover:bg-blue-200 focus:bg-blue-200 focus:ring-2 focus:ring-blue-400 outline-none text-base sm:text-lg rounded-xl px-2 cursor-pointer transition-colors duration-200 ease-in-out self-center justify-self-end"
                     name={selectName}
                     value={
                         selectName === `from-select` ? fromCurrency : toCurrency
@@ -79,7 +79,11 @@ export default function InputCurrency({
                 >
                     {currencies.map((currency) => {
                         return (
-                            <option value={currency} key={currency}>
+                            <option
+                                value={currency}
+                                key={currency}
+                                className="text-base sm:text-lg"
+                            >
                                 {currency.toUpperCase()}
                             </option>
                         );
