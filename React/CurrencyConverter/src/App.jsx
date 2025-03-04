@@ -52,7 +52,7 @@ export default function App() {
                 className="w-full h-20 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl 
                bg-gradient-to-r from-blue-800 via-yellow-500 to-green-500 
                bg-[length:200%_200%] animate-[bg-slide_3s_infinite] 
-               backdrop-blur-md rounded-2xl shadow-lg 
+               backdrop-blur-xs rounded-2xl shadow-lg 
                flex justify-center items-center 
                text-4xl font-extrabold text-transparent bg-clip-text"
             >
