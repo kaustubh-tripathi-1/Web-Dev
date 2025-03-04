@@ -62,7 +62,7 @@ export function useCurrencyInfo(currency) {
                     setCurrencyData(fallbackData[currency]);
                 } catch (fallbackError) {
                     console.error(
-                        `Both APIs failed:" ${primaryError}, ${fallbackError}`
+                        `Both APIs failed:\nPrimary API Error: ${primaryError}\nFallback API Error: ${fallbackError}`
                     );
                 }
             }
