@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useCurrencyInfo } from "./hooks/useCurrencyInfo.js";
 import { useDebounce } from "./hooks/useDebounce.js";
 import InputCurrency from "./components/InputCurrency.jsx";
@@ -7,16 +7,22 @@ import swapIcon from "./assets/sort.png";
 export default function App() {
     const [fromCurrency, setFromCurrency] = useState(`usd`);
     const [toCurrency, setToCurrency] = useState(`inr`);
-    const [currencies, setCurrencies] = useState([]);
+    // const [currencies, setCurrencies] = useState([]);
     const [currencyData, error] = useCurrencyInfo(fromCurrency);
     const [fromAmount, setFromAmount] = useState(``);
     const [toAmount, setToAmount] = useState(``);
     const [lastChanged, setLastChanged] = useState("from");
 
-    useEffect(() => {
+    //$ W/O memoizing currencies array for currency dropdown
+    /* useEffect(() => {
         if (currencyData) {
             setCurrencies(Object.keys(currencyData));
         }
+    }, [currencyData]); */
+
+    //$ Memoizing currencies array for currency dropdown
+    const currencies = useMemo(() => {
+        return currencyData ? Object.keys(currencyData) : [];
     }, [currencyData]);
 
     //$ Add debounced values for amounts
@@ -46,7 +52,8 @@ export default function App() {
     useEffect(() => {
         if (!currencyData) return;
 
-        if (lastChanged === "from") {
+        //$ Unnecessary state updates
+        /* if (lastChanged === "from") {
             if (debouncedFromAmount === "" || debouncedFromAmount < 0) {
                 setToAmount("");
             } else {
@@ -62,6 +69,20 @@ export default function App() {
                     (debouncedToAmount / currencyData[toCurrency]).toFixed(2)
                 );
             }
+        } */
+
+        if (lastChanged === "from" && debouncedFromAmount !== "") {
+            setToAmount(
+                parseFloat(
+                    currencyData[toCurrency] * debouncedFromAmount
+                ).toFixed(2)
+            );
+        } else if (lastChanged === "to" && debouncedToAmount !== "") {
+            setFromAmount(
+                parseFloat(
+                    debouncedToAmount / currencyData[toCurrency]
+                ).toFixed(2)
+            );
         }
     }, [
         currencyData,
@@ -72,6 +93,8 @@ export default function App() {
     ]);
 
     function swapFromAndTo() {
+        if (fromCurrency === toCurrency) return; // Prevent redundant swaps
+
         setFromCurrency(toCurrency);
         setToCurrency(fromCurrency);
         setFromAmount(toAmount);
