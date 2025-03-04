@@ -10,6 +10,7 @@ body,
 @theme {
     --animate-spin-slow: spin 3s linear infinite;
     --animate-fade-in: fadeIn 0.5s ease-in-out;
+    --animate-heading: bgSlide 2s linear infinite;
 
     @keyframes spin {
         from {
@@ -27,6 +28,17 @@ body,
         100% {
             opacity: 1;
             transform: translateY(0);
+        }
+    }
+    @keyframes bg-slide {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
         }
     }
 }
