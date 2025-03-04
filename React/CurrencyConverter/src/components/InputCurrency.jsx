@@ -14,6 +14,7 @@ export default function InputCurrency({
     className = ``,
 }) {
     /**
+     * Updates the state as the user types
      * @param {Event} event
      */
     function handleOnChange(event) {
