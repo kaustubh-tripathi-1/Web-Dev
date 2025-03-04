@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+const cache = {};
+
 export function useCurrencyInfo(currency) {
     const [currencyData, setCurrencyData] = useState(null);
     const [error, setError] = useState(null);
@@ -12,6 +14,11 @@ export function useCurrencyInfo(currency) {
     const fallbackUrl = `https://latest.currency-api.pages.dev/v1/currencies/${currency}.json`;
 
     useEffect(() => {
+        if (cache[currency]) {
+            setCurrencyData(cache[currency]);
+            return;
+        }
+
         async function fetchCurrencyData() {
             //$ API call of Base URL
             try {
@@ -24,6 +31,7 @@ export function useCurrencyInfo(currency) {
                 }
 
                 const currencyJSON = await response.json();
+                cache[currency] = currencyJSON[currency];
 
                 if (!currencyJSON[currency]) {
                     throw new Error("Base API returned invalid data");
@@ -50,7 +58,7 @@ export function useCurrencyInfo(currency) {
                         setCurrencyData(null);
                         throw new Error("Fallback API returned invalid data");
                     }
-
+                    cache[currency] = fallbackData[currency];
                     setCurrencyData(fallbackData[currency]);
                 } catch (fallbackError) {
                     console.error(
