@@ -54,11 +54,11 @@ export default function InputCurrency({
         >
             <label
                 htmlFor={forLabel}
-                className="text-gray-700 text-base sm:text-xl font-medium animate-fade-in sm:w-1/4"
+                className="text-gray-700 text-base sm:text-xl font-medium animate-pulse sm:w-1/4"
             >
                 {forLabel === `from` ? "From" : "To"}
             </label>
-            <p className="text-gray-700 text-base sm:text-xl font-medium  justify-self-end">
+            <p className="text-gray-700 text-base sm:text-xl font-medium animate-fade-in justify-self-end">
                 Currency Type
             </p>
             <input
