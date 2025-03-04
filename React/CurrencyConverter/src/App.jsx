@@ -8,14 +8,33 @@ export default function App() {
     const [toCurrency, setToCurrency] = useState(`inr`);
     const [currencies, setCurrencies] = useState([]);
     const [currencyData, error] = useCurrencyInfo(fromCurrency);
-    const [fromAmount, setFromAmount] = useState(0);
-    const [toAmount, setToAmount] = useState(0);
+    const [fromAmount, setFromAmount] = useState(``);
+    const [toAmount, setToAmount] = useState(``);
+    const [lastChanged, setLastChanged] = useState("from");
 
     useEffect(() => {
         if (currencyData) {
             setCurrencies(Object.keys(currencyData));
         }
     }, [currencyData]);
+
+    useEffect(() => {
+        if (!currencyData) return;
+
+        if (lastChanged === "from") {
+            if (fromAmount === "" || fromAmount < 0) {
+                setToAmount("");
+            } else {
+                setToAmount((currencyData[toCurrency] * fromAmount).toFixed(2));
+            }
+        } else if (lastChanged === "to") {
+            if (toAmount === "" || toAmount < 0) {
+                setFromAmount("");
+            } else {
+                setFromAmount((toAmount / currencyData[toCurrency]).toFixed(2));
+            }
+        }
+    }, [currencyData, fromAmount, toAmount, toCurrency, lastChanged]);
 
     function swapFromAndTo() {
         setFromCurrency(toCurrency);
@@ -37,9 +56,15 @@ export default function App() {
                     toCurrency={toCurrency}
                     setToCurrency={setToCurrency}
                     fromAmount={fromAmount}
-                    setFromAmount={setFromAmount}
+                    setFromAmount={(value) => {
+                        setFromAmount(value);
+                        setLastChanged("from");
+                    }}
                     toAmount={toAmount}
-                    setToAmount={setToAmount}
+                    setToAmount={(value) => {
+                        setToAmount(value);
+                        setLastChanged("to");
+                    }}
                     selectName="from-select"
                     forLabel="from"
                 />
@@ -62,10 +87,16 @@ export default function App() {
                     setFromCurrency={setFromCurrency}
                     toCurrency={toCurrency}
                     setToCurrency={setToCurrency}
-                    toAmount={toAmount}
-                    setToAmount={setToAmount}
                     fromAmount={fromAmount}
-                    setFromAmount={setFromAmount}
+                    setFromAmount={(value) => {
+                        setFromAmount(value);
+                        setLastChanged("from");
+                    }}
+                    toAmount={toAmount}
+                    setToAmount={(value) => {
+                        setToAmount(value);
+                        setLastChanged("to");
+                    }}
                     selectName="to-select"
                     forLabel="to"
                 />
