@@ -5,9 +5,16 @@ import marketingImage from "../../assets/hero_sms-marketing_v1.png";
 export default function Home() {
     return (
         <div className="mx-auto w-full max-w-7xl">
-            <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16 flex">
-                <div className="relative z-10 max-w-screen-xl px-4  pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
-                    <div className="max-w-xl sm:mt-1 mt-80 space-y-8 text-center sm:text-right sm:ml-auto">
+            <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-4 flex">
+                <div className="w-full flex justify-evenly items-center z-10 max-w-screen-xl">
+                    <div className="w-fit sm:my-20 sm:pt-1 pt-12 h-full ">
+                        <img
+                            className="w-96 rounded-4xl"
+                            src={teamImage}
+                            alt="image1"
+                        />
+                    </div>
+                    <div className="max-w-xl sm:mt-1 mt-80 space-y-8 text-center sm:text-right ">
                         <h2 className="text-4xl font-bold sm:text-5xl">
                             Download Now
                             <span className="hidden sm:block text-4xl">
@@ -33,17 +40,9 @@ export default function Home() {
                         </Link>
                     </div>
                 </div>
-
-                <div className="absolute inset-0 w-full sm:my-20 sm:pt-1 pt-12 h-full ">
-                    <img
-                        className="w-96 rounded-4xl"
-                        src={teamImage}
-                        alt="image1"
-                    />
-                </div>
             </aside>
 
-            <div className="grid  place-items-center sm:mt-20">
+            <div className="grid place-items-center sm:max-md:mt-20">
                 <img
                     className="sm:w-96 w-48 rounded-4xl"
                     src={marketingImage}
