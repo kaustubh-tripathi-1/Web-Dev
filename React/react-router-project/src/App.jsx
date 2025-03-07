@@ -1,10 +1,5 @@
-import { useState } from "react";
-import Header from "./components/header/Header.jsx";
+import { Routes, Route } from "react-router";
 
 export default function App() {
-    return (
-        <>
-            <Header />
-        </>
-    );
+    return <></>;
 }
