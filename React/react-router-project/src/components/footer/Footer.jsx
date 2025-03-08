@@ -100,7 +100,7 @@ export default function Footer() {
                             className="hover:underline"
                             target="_blank"
                         >
-                            KT
+                            &nbsp;KT
                         </a>
                         . All Rights Reserved.
                     </span>
