@@ -18,7 +18,7 @@ import Github from "./components/github/Github.jsx";
 import User from "./components/user/User.jsx";
 
 //$ 1st way to define routes
-/* const router = createBrowserRouter([
+const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout />,
@@ -27,12 +27,13 @@ import User from "./components/user/User.jsx";
             { path: "about", element: <About /> },
             { path: "contact", element: <Contact /> },
             { path: "github", element: <Github /> },
+            { path: "user/:userId", element: <User /> },
         ],
     },
-]); */
+]);
 
 //$ 2nd way to define routes
-const router = createBrowserRouter(
+/* const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -42,7 +43,7 @@ const router = createBrowserRouter(
             <Route path="/user/:userId" element={<User />} />
         </Route>
     )
-);
+); */
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
