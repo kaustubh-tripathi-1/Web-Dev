@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { ThemeContext /* , useTheme */ } from "../contexts/ThemeContext";
+import { useTheme } from "../contexts/ThemeContext.jsx";
 
 export default function ThemeBtn() {
-    // const { themeMode, darkTheme, lightTheme } = useTheme();
-    const { theme, setTheme } = useContext(ThemeContext);
+    const { theme, setTheme } = useTheme();
 
     function toggleTheme(event) {
         const themeStatus = event.currentTarget.checked;
