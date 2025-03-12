@@ -7,12 +7,12 @@ export const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
     const [theme, setTheme] = useState(`light`);
 
-    /* function toggleTheme() {
+    function toggleTheme() {
         setTheme((prevTheme) => (prevTheme === `light` ? `dark` : `light`));
-    } */
+    }
 
     return (
-        <ThemeContext.Provider value={{ theme, setTheme /* , toggleTheme */ }}>
+        <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
             {children}
         </ThemeContext.Provider>
     );
