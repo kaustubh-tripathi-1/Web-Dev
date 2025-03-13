@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { ToDoProvider } from "./contexts/ToDoContext";
+import MainSection from "./components/MainSection";
 
 export default function App() {
     return (
-        <>
-            <h1>To-Do</h1>
-        </>
+        <ToDoProvider>
+            <MainSection />
+        </ToDoProvider>
     );
 }
