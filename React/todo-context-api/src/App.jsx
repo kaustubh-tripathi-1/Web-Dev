@@ -1,4 +1,4 @@
-import { ToDoProvider } from "./contexts/ToDoContext";
+import ToDoProvider from "./components/ToDoProvider";
 import MainSection from "./components/MainSection";
 
 export default function App() {
