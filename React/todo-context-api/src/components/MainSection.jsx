@@ -15,14 +15,20 @@ export default function MainSection() {
                     <TodoForm />
                 </div>
                 <div className="flex flex-wrap gap-y-3">
-                    {todos.map((todo) => (
-                        <TodoItem
-                            key={todo.id}
-                            id={todo.id}
-                            task={todo.task}
-                            completed={todo.completed}
-                        />
-                    ))}
+                    {todos.length === 0 ? (
+                        <p className="text-center w-full">
+                            No tasks yet. Add a task to get started!
+                        </p>
+                    ) : (
+                        todos.map((todo) => (
+                            <TodoItem
+                                key={todo.id}
+                                id={todo.id}
+                                task={todo.task}
+                                completed={todo.completed}
+                            />
+                        ))
+                    )}
                 </div>
                 {todos.length > 0 && (
                     <button
