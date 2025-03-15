@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useToDo } from "../hooks/useToDo.js";
+import { useToDoActions } from "../hooks/useToDo.js";
 
 export default function TodoForm() {
-    const { addTask } = useToDo();
+    const { addTask } = useToDoActions();
 
     function handleAddTask(formData) {
         const task = formData.get(`task-input`);
@@ -21,6 +21,9 @@ export default function TodoForm() {
                 event.currentTarget.reset();
             }}
         >
+            <label htmlFor="task-input" className="sr-only">
+                Add a new task
+            </label>
             <input
                 type="text"
                 name="task-input"
