@@ -1,9 +1,9 @@
-import { useToDo } from "../hooks/useToDo.js";
+import { useToDoState } from "../hooks/useToDo.js";
 import TodoForm from "./ToDoForm.jsx";
 import TodoItem from "./ToDoItem.jsx";
 
 export default function MainSection() {
-    const { todos, clearAllTodos } = useToDo();
+    const { todos, clearAllTodos } = useToDoState();
 
     return (
         <div className="bg-[#172842] min-h-screen py-8">
