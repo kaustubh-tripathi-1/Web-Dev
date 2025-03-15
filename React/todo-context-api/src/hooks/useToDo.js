@@ -1,6 +1,17 @@
 import { useContext } from "react";
-import { ToDoContext } from "../contexts/ToDoContext";
+import { ToDoStateContext, ToDoActionsContext } from "../contexts/ToDoContext";
 
-export function useToDo() {
-    return useContext(ToDoContext);
+export function useToDoState() {
+    const context = useContext(ToDoStateContext);
+    if (!context) {
+        throw new Error("useToDo must be used within a ToDoProvider");
+    }
+    return context;
+}
+export function useToDoActions() {
+    const context = useContext(ToDoActionsContext);
+    if (!context) {
+        throw new Error("useToDo must be used within a ToDoProvider");
+    }
+    return context;
 }
