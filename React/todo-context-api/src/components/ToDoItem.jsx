@@ -1,11 +1,17 @@
-import { useState } from "react";
-import { useToDo } from "../hooks/useToDo";
+import { useState, useEffect, memo } from "react";
+import { useToDoActions } from "../hooks/useToDo";
 
-export default function TodoItem({ id, task, completed }) {
-    const { updateTask, deleteTask, toggleTaskCompleted } = useToDo();
+function ToDoItem({ id, task, completed }) {
+    const { updateTask, deleteTask, toggleTaskCompleted } = useToDoActions();
 
     const [isTodoEditable, setIsTodoEditable] = useState(false);
     const [toDoMsg, setTodoMsg] = useState(task);
+
+    useEffect(() => {
+        setTodoMsg(task);
+    }, [task]);
+
+    console.log(`TodoItem with id ${id} rendered`);
 
     return (
         <div
@@ -47,11 +53,18 @@ export default function TodoItem({ id, task, completed }) {
                     if (completed) return;
 
                     if (isTodoEditable) {
-                        updateTask(id, toDoMsg);
+                        if (!toDoMsg.trim()) {
+                            setTodoMsg(task); // Revert to original task
+                        } else {
+                            updateTask(id, toDoMsg.trim());
+                        }
+                    } else {
+                        setTodoMsg(task);
                     }
                     setIsTodoEditable((prev) => !prev);
                 }}
                 disabled={completed}
+                aria-label={isTodoEditable ? "Save task" : "Edit task"}
             >
                 {completed ? "✔️" : isTodoEditable ? "📁" : "✏️"}
             </button>
@@ -59,9 +72,13 @@ export default function TodoItem({ id, task, completed }) {
             <button
                 className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 cursor-pointer"
                 onClick={() => deleteTask(id)}
+                aria-label="Delete task"
             >
                 ❌
             </button>
         </div>
     );
 }
+
+export default memo(ToDoItem);
+// export default ToDoItem;
