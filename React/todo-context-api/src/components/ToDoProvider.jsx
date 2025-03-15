@@ -10,7 +10,7 @@ export default function ToDoProvider({ children }) {
         setTodos((prevTodos) => [
             ...prevTodos,
             {
-                id: Date.now(),
+                id: crypto.randomUUID(),
                 task: task,
                 completed: false,
             },
@@ -42,21 +42,29 @@ export default function ToDoProvider({ children }) {
 
     function clearAllTodos() {
         setTodos([]);
-        localStorage.clear();
+        localStorage.removeItem(`todos`);
     }
 
     //@ 1st side effect - to get all the stored todos from the local storage
     useEffect(() => {
-        const localTodos = JSON.parse(localStorage.getItem(`todos`));
-
-        if (localTodos && localTodos.length) {
-            setTodos(localTodos);
+        try {
+            const localTodos = JSON.parse(localStorage.getItem("todos"));
+            if (localTodos && localTodos.length) {
+                setTodos(localTodos);
+            }
+        } catch (error) {
+            console.error("Failed to load todos from localStorage:", error);
+            setTodos([]);
         }
     }, []);
 
     //@ 2nd side effect - to set all the todos which are in the state todos to the local storage
     useEffect(() => {
-        localStorage.setItem(`todos`, JSON.stringify(todos));
+        //& To ensure latest state value avoiding stale todos value
+        setTodos((prevTodos) => {
+            localStorage.setItem(`todos`, JSON.stringify(prevTodos));
+            return prevTodos;
+        });
     }, [todos]);
 
     return (
