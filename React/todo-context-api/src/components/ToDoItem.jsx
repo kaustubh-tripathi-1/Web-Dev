@@ -1,5 +1,8 @@
 import { useState, useEffect, memo } from "react";
 import { useToDoActions } from "../hooks/useToDo";
+import editImg from "../assets/edit.png";
+import correctImg from "../assets/correct.png";
+import deletemg from "../assets/trash.png";
 
 function ToDoItem({ id, task, completed }) {
     const { updateTask, deleteTask, toggleTaskCompleted } = useToDoActions();
@@ -46,7 +49,7 @@ function ToDoItem({ id, task, completed }) {
             />
             {/* Edit, Save Button */}
             <button
-                className={`inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50 ${
+                className={`inline-flex w-8 h-8 text-lg rounded-md border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50 ${
                     completed ? "cursor-default" : "cursor-pointer"
                 }`}
                 onClick={() => {
@@ -66,7 +69,13 @@ function ToDoItem({ id, task, completed }) {
                 disabled={completed}
                 aria-label={isTodoEditable ? "Save task" : "Edit task"}
             >
-                {completed ? "✔️" : isTodoEditable ? "📁" : "✏️"}
+                {completed ? (
+                    "✔️"
+                ) : isTodoEditable ? (
+                    <img src={correctImg} alt="save-icon" />
+                ) : (
+                    <img src={editImg} alt="edit-icon" />
+                )}
             </button>
             {/* Delete Todo Button */}
             <button
@@ -74,7 +83,7 @@ function ToDoItem({ id, task, completed }) {
                 onClick={() => deleteTask(id)}
                 aria-label="Delete task"
             >
-                ❌
+                <img src={deletemg} alt="delete-icon" />
             </button>
         </div>
     );
