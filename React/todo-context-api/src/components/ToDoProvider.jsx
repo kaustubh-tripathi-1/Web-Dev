@@ -1,8 +1,9 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import { ToDoContext } from "../contexts/ToDoContext.js";
 
 export default function ToDoProvider({ children }) {
     const [todos, setTodos] = useState([]);
+    const timeoutRef = useRef(null);
 
     //$ All functions to be added to context
     //@ Adds a task to the todos state
@@ -58,15 +59,24 @@ export default function ToDoProvider({ children }) {
         }
     }, []);
 
-    //@ 2nd side effect - to set all the todos which are in the state todos to the local storage
+    //@ 2nd side effect - to set all the todos which are in the state todos to the local storage with a debounce
     useEffect(() => {
         //& To ensure latest state value avoiding stale todos value
-        setTodos((prevTodos) => {
-            localStorage.setItem(`todos`, JSON.stringify(prevTodos));
-            return prevTodos;
-        });
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+
+        timeoutRef.current = setTimeout(() => {
+            setTodos((prevTodos) => {
+                localStorage.setItem(`todos`, JSON.stringify(prevTodos));
+                return prevTodos;
+            });
+        }, 300);
+
+        return () => clearTimeout(timeoutRef.current);
     }, [todos]);
 
+    //$ Memoize the context values and prevent re-creation on every re-render
     const contextValue = useMemo(
         () => ({
             todos,
