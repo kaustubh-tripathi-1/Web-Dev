@@ -1,5 +1,8 @@
 import { useEffect, useState, useMemo, useRef } from "react";
-import { ToDoContext } from "../contexts/ToDoContext.js";
+import {
+    ToDoStateContext,
+    ToDoActionsContext,
+} from "../contexts/ToDoContext.js";
 
 export default function ToDoProvider({ children }) {
     const [todos, setTodos] = useState([]);
@@ -77,21 +80,23 @@ export default function ToDoProvider({ children }) {
     }, [todos]);
 
     //$ Memoize the context values and prevent re-creation on every re-render
-    const contextValue = useMemo(
+    const stateValue = useMemo(() => ({ todos }), [todos]); // Only recreate if todos changes
+    const actionsValue = useMemo(
         () => ({
-            todos,
             addTask,
             updateTask,
             deleteTask,
             toggleTaskCompleted,
             clearAllTodos,
         }),
-        [todos] // Only recreate if todos changes
+        [] // Only recreate if todos changes
     );
 
     return (
-        <ToDoContext.Provider value={contextValue}>
-            {children}
-        </ToDoContext.Provider>
+        <ToDoStateContext.Provider value={stateValue}>
+            <ToDoActionsContext.Provider value={actionsValue}>
+                {children}
+            </ToDoActionsContext.Provider>
+        </ToDoStateContext.Provider>
     );
 }
