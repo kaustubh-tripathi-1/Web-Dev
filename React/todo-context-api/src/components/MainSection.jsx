@@ -1,5 +1,6 @@
 import { useToDo } from "../hooks/useToDo.js";
 import TodoForm from "./ToDoForm.jsx";
+import TodoItem from "./ToDoItem.jsx";
 
 export default function MainSection() {
     const { todos } = useToDo();
@@ -14,7 +15,14 @@ export default function MainSection() {
                     <TodoForm />
                 </div>
                 <div className="flex flex-wrap gap-y-3">
-                    {/*Loop and Add TodoItem here */}
+                    {todos.map((todo) => (
+                        <TodoItem
+                            key={todo.id}
+                            id={todo.id}
+                            task={todo.task}
+                            completed={todo.completed}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
