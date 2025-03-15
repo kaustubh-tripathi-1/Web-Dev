@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useToDo } from "../hooks/useToDo.js";
 
 export default function TodoForm() {
@@ -5,7 +6,10 @@ export default function TodoForm() {
 
     function handleAddTask(formData) {
         const task = formData.get(`task-input`);
-        addTask(task);
+        if (!task.trim()) {
+            return;
+        }
+        addTask(task.trim());
     }
 
     return (
@@ -25,7 +29,7 @@ export default function TodoForm() {
             />
             <button
                 type="submit"
-                className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0"
+                className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0 cursor-pointer"
             >
                 Add
             </button>
