@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { ToDoContext } from "../contexts/ToDoContext.js";
 
 export default function ToDoProvider({ children }) {
@@ -67,17 +67,20 @@ export default function ToDoProvider({ children }) {
         });
     }, [todos]);
 
+    const contextValue = useMemo(
+        () => ({
+            todos,
+            addTask,
+            updateTask,
+            deleteTask,
+            toggleTaskCompleted,
+            clearAllTodos,
+        }),
+        [todos] // Only recreate if todos changes
+    );
+
     return (
-        <ToDoContext.Provider
-            value={{
-                todos,
-                addTask,
-                updateTask,
-                deleteTask,
-                toggleTaskCompleted,
-                clearAllTodos,
-            }}
-        >
+        <ToDoContext.Provider value={contextValue}>
             {children}
         </ToDoContext.Provider>
     );
