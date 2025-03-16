@@ -21,14 +21,16 @@ export default function MainSection() {
                             No tasks yet. Add a task to get started!
                         </p>
                     ) : (
-                        todos.map((todo) => (
-                            <TodoItem
-                                key={todo.id}
-                                id={todo.id}
-                                task={todo.task}
-                                completed={todo.completed}
-                            />
-                        ))
+                        <div className="flex flex-col gap-4 bg-indigo-400  p-2 rounded-xl">
+                            {todos.map((todo) => (
+                                <TodoItem
+                                    key={todo.id}
+                                    id={todo.id}
+                                    task={todo.task}
+                                    completed={todo.completed}
+                                />
+                            ))}
+                        </div>
                     )}
                 </div>
                 {todos.length > 0 && (
