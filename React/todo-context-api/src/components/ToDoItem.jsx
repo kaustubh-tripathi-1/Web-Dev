@@ -18,10 +18,10 @@ function ToDoItem({ id, task, completed }) {
 
     return (
         <div
-            className={`w-full h-fit flex items-center justify-between border border-gray-600 rounded-xl px-4 py-2 gap-x-4 shadow-md bg-gray-800/50 text-white transition-all duration-300 ${
+            className={`w-full h-fit flex items-center justify-between border border-gray-600 rounded-xl px-4 py-2 gap-x-4 shadow-md bg-gray-800 text-white transition-all duration-300 ${
                 completed
-                    ? "bg-green-500/20 scale-100 hover:scale-102"
-                    : "bg-purple-200/20 scale-100 hover:scale-102"
+                    ? "bg-green-700 hover:bg-green-800 scale-100 hover:scale-102"
+                    : "bg-indigo-700 hover:bg-indigo-800 scale-100 hover:scale-102"
             } animate-fade-in`}
         >
             <label
