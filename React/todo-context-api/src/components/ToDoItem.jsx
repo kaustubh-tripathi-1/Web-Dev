@@ -2,7 +2,7 @@ import { useState, useEffect, memo } from "react";
 import { useToDoActions } from "../hooks/useToDo";
 import editImg from "../assets/edit.png";
 import correctImg from "../assets/correct.png";
-import deletemg from "../assets/trash.png";
+import deleteImg from "../assets/trash.png";
 
 function ToDoItem({ id, task, completed }) {
     const { updateTask, deleteTask, toggleTaskCompleted } = useToDoActions();
@@ -18,46 +18,71 @@ function ToDoItem({ id, task, completed }) {
 
     return (
         <div
-            className={`w-full h-fit flex items-center justify-evenly border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
-                completed ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"
-            }`}
+            className={`w-full h-fit flex items-center justify-between border border-gray-600 rounded-xl px-4 py-2 gap-x-4 shadow-md bg-gray-800/50 text-white transition-all duration-300 ${
+                completed
+                    ? "bg-green-500/20 scale-100 hover:scale-102"
+                    : "bg-purple-200/20 scale-100 hover:scale-102"
+            } animate-fade-in`}
         >
             <label
                 htmlFor={`mark-as-completed-${id}`}
-                className="cursor-pointer text-xs whitespace-nowrap flex items-center"
+                className="cursor-pointer text-sm whitespace-nowrap"
             >
                 Mark as done
             </label>
             <input
                 type="checkbox"
-                className="cursor-pointer"
+                className="cursor-pointer w-5 h-5 accent-teal-500 transition-transform duration-200 hover:scale-110 hover:accent-teal-600 focus:scale-110 focus:accent-teal-600 outline-none"
                 checked={completed}
                 onChange={() => toggleTaskCompleted(id)}
                 id={`mark-as-completed-${id}`}
             />
-            <input
+            {/* <input
                 type="text"
                 name="task"
-                className={`h-fit text-wrap border outline-none w-full bg-transparent rounded-lg ${
+                className={`h-fit text-wrap border outline-none w-2/3  rounded-lg ${
                     isTodoEditable
-                        ? "border-black/10 px-2 bg-yellow-200"
+                        ? "border-gray-500 px-3 bg-teal-600"
                         : "border-transparent"
-                } ${completed ? "line-through" : ""}`}
+                } ${
+                    completed ? "line-through text-gray-400" : "text-white"
+                } transition-all duration-300`}
                 value={toDoMsg}
                 onChange={(e) => setTodoMsg(e.target.value)}
                 readOnly={!isTodoEditable}
+            /> */}
+            <textarea
+                name="task"
+                className={`min-h-fit text-wrap border outline-none w-2/3 rounded-lg resize-none overflow-hidden ${
+                    isTodoEditable
+                        ? "border-gray-500 px-3 bg-teal-600/30 text-white"
+                        : "border-transparent bg-transparent"
+                } ${
+                    completed ? "line-through text-gray-400" : "text-white"
+                } transition-all duration-300`}
+                value={toDoMsg}
+                onChange={(e) => {
+                    setTodoMsg(e.target.value);
+                }}
+                readOnly={!isTodoEditable}
+                rows={1}
+                onInput={(e) => {
+                    e.target.style.height = "auto";
+                    e.target.style.height = `${e.target.scrollHeight}px`;
+                }}
             />
-            {/* Edit, Save Button */}
             <button
-                className={`inline-flex w-8 h-8 text-lg rounded-md border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50 ${
-                    completed ? "cursor-default" : "cursor-pointer"
+                className={`inline-flex w-10 h-10 rounded-lg justify-center items-center outline-1 bg-gray-200   transition-all duration-300 transform  ${
+                    completed
+                        ? "cursor-not-allowed opacity-50"
+                        : "cursor-pointer hover:bg-[#FFFC99] focus:bg-[#FFFC99] hover:scale-110 focus:scale-120 active:scale-95"
                 }`}
                 onClick={() => {
                     if (completed) return;
 
                     if (isTodoEditable) {
                         if (!toDoMsg.trim()) {
-                            setTodoMsg(task); // Revert to original task
+                            setTodoMsg(task);
                         } else {
                             updateTask(id, toDoMsg.trim());
                         }
@@ -72,22 +97,20 @@ function ToDoItem({ id, task, completed }) {
                 {completed ? (
                     "✔️"
                 ) : isTodoEditable ? (
-                    <img src={correctImg} alt="save-icon" />
+                    <img src={correctImg} alt="save-icon" className="w-6 h-6" />
                 ) : (
-                    <img src={editImg} alt="edit-icon" />
+                    <img src={editImg} alt="edit-icon" className="w-6 h-6" />
                 )}
             </button>
-            {/* Delete Todo Button */}
             <button
-                className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 cursor-pointer"
+                className="inline-flex w-10 h-10 rounded-lg justify-center items-center bg-gray-200 hover:bg-red-600 focus:bg-red-600 transition-all duration-300 transform hover:scale-120 focus:scale-120 active:scale-95 cursor-pointer outline-1"
                 onClick={() => deleteTask(id)}
                 aria-label="Delete task"
             >
-                <img src={deletemg} alt="delete-icon" />
+                <img src={deleteImg} alt="delete-icon" className="w-6 h-6" />
             </button>
         </div>
     );
 }
 
 export default memo(ToDoItem);
-// export default ToDoItem;
