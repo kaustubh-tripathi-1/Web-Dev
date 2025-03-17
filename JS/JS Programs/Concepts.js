@@ -305,11 +305,21 @@ getData(1, () => {
             if (nextData) {
                 nextData();
             }
-        }, 5000);
+        }, 2000);
     });
 }
 
-let val = getData(23); */
+let val = getData(23).then((data) => {
+    console.log(data);
+    return data;
+})
+val.then((data) => {
+    console.log(data);
+    return data;
+});
+setTimeout(() => {
+    console.log(val);
+}, 3000); */
 
 //& Actually using a promise returned by an API or something else
 //& No need to pass callbacks now
