@@ -4,11 +4,7 @@ import { useEffect, useReducer } from "react";
 function themeReducer(state, action) {
     switch (action.type) {
         case "switchTheme": {
-            if (state.theme === "light") {
-                return { theme: "dark" };
-            } else {
-                return { theme: "light" };
-            }
+            return { theme: state.theme === "light" ? "dark" : "light" };
         }
         default:
             return state;
