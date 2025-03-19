@@ -4,7 +4,9 @@ import { useEffect, useReducer } from "react";
 function themeReducer(state, action) {
     switch (action.type) {
         case "switchTheme": {
-            return { theme: state.theme === "light" ? "dark" : "light" };
+            const newTheme = state.theme === "light" ? "dark" : "light";
+            localStorage.setItem("theme", newTheme);
+            return { theme: newTheme };
         }
         default:
             return state;
@@ -12,7 +14,9 @@ function themeReducer(state, action) {
 }
 
 export default function ThemeSwitcher() {
-    const [state, dispatch] = useReducer(themeReducer, { theme: "dark" });
+    const [state, dispatch] = useReducer(themeReducer, {
+        theme: localStorage.getItem("theme") ?? "dark",
+    });
 
     useEffect(() => {
         const html = document.documentElement;
