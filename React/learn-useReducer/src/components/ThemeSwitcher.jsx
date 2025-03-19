@@ -21,7 +21,7 @@ export default function ThemeSwitcher() {
     useEffect(() => {
         const html = document.documentElement;
         html.classList.remove(`light`, `dark`);
-        html.classList.add(`${state.theme}`);
+        html.classList.add(state.theme);
     }, [state]);
 
     return (
