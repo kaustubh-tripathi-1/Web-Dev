@@ -1,6 +1,14 @@
 import { useState, useReducer, useRef } from "react";
 import "./Counter.css";
 
+/**
+ * The function `countReducer` is a reducer function in JavaScript React that handles actions to
+ * increment, decrement, or reset a count state.
+ * @returns The `countReducer` function returns an updated state object based on the action type
+ * provided. If the action type is "increment", it increments the count value by 1. If the action type
+ * is "decrement", it decrements the count value by 1. If the action type is "reset", it sets the count
+ * value to 0. If the action type is not recognized, it
+ */
 function countReducer(state, action) {
     switch (action.type) {
         case "increment": {
