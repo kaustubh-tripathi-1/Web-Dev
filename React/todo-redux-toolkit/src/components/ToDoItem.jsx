@@ -1,11 +1,17 @@
 import { useState, useEffect, memo } from "react";
-import { useToDoActions } from "../hooks/useToDo";
 import editImg from "../assets/edit.png";
 import correctImg from "../assets/correct.png";
 import deleteImg from "../assets/trash.png";
+import { useSelector, useDispatch } from "react-redux";
+import {
+    toggleTaskCompleted,
+    updateTask,
+    deleteTask,
+} from "../features/todo/todoSlice";
 
 function ToDoItem({ id, task, completed }) {
-    const { updateTask, deleteTask, toggleTaskCompleted } = useToDoActions();
+    const dispatch = useDispatch();
+    const { todos, order } = useSelector((state) => state.todos);
 
     const [isTodoEditable, setIsTodoEditable] = useState(false);
     const [toDoMsg, setTodoMsg] = useState(task);
@@ -13,8 +19,6 @@ function ToDoItem({ id, task, completed }) {
     useEffect(() => {
         setTodoMsg(task);
     }, [task]);
-
-    console.log(`TodoItem with id ${id} rendered`);
 
     return (
         <div
@@ -34,7 +38,13 @@ function ToDoItem({ id, task, completed }) {
                 type="checkbox"
                 className="cursor-pointer w-5 h-5 accent-teal-500 transition-transform duration-200 hover:scale-110 hover:accent-teal-600 focus:scale-110 focus:accent-teal-600 outline-none"
                 checked={completed}
-                onChange={() => toggleTaskCompleted(id)}
+                onChange={() =>
+                    dispatch(
+                        toggleTaskCompleted({
+                            id: id,
+                        })
+                    )
+                }
                 id={`mark-as-completed-${id}`}
             />
             {/* <input
@@ -84,7 +94,12 @@ function ToDoItem({ id, task, completed }) {
                         if (!toDoMsg.trim()) {
                             setTodoMsg(task);
                         } else {
-                            updateTask(id, toDoMsg.trim());
+                            dispatch(
+                                updateTask({
+                                    id: id,
+                                    task: toDoMsg.trim(),
+                                })
+                            );
                         }
                     } else {
                         setTodoMsg(task);
@@ -104,7 +119,13 @@ function ToDoItem({ id, task, completed }) {
             </button>
             <button
                 className="inline-flex w-10 h-10 rounded-lg justify-center items-center bg-gray-200 hover:bg-red-600 focus:bg-red-600 transition-all duration-300 transform hover:scale-120 focus:scale-120 active:scale-95 cursor-pointer outline-1"
-                onClick={() => deleteTask(id)}
+                onClick={() =>
+                    dispatch(
+                        deleteTask({
+                            id: id,
+                        })
+                    )
+                }
                 aria-label="Delete task"
             >
                 <img src={deleteImg} alt="delete-icon" className="w-6 h-6" />
