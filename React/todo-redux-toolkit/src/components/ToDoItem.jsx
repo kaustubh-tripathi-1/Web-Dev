@@ -2,7 +2,7 @@ import { useState, useEffect, memo } from "react";
 import editImg from "../assets/edit.png";
 import correctImg from "../assets/correct.png";
 import deleteImg from "../assets/trash.png";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
     toggleTaskCompleted,
     updateTask,
@@ -11,14 +11,14 @@ import {
 
 function ToDoItem({ id, task, completed }) {
     const dispatch = useDispatch();
-    const { todos, order } = useSelector((state) => state.todos);
-
     const [isTodoEditable, setIsTodoEditable] = useState(false);
     const [toDoMsg, setTodoMsg] = useState(task);
 
     useEffect(() => {
         setTodoMsg(task);
     }, [task]);
+
+    console.log(`TodoItem with ${id} re-rendered`);
 
     return (
         <div
