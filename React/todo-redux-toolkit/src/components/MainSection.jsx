@@ -25,10 +25,6 @@ export default function MainSection() {
                         <div className="flex flex-col gap-4 bg-indigo-400  p-2 rounded-xl">
                             {order.map((id) => {
                                 const todo = todos[id];
-                                console.log(
-                                    `In MainSection - ${todo.id}\n${todo.task}\n${todo.completed}`
-                                );
-
                                 return (
                                     <TodoItem
                                         key={todo.id}
