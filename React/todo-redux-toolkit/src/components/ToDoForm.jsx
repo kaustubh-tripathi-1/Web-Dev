@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useToDoActions } from "../hooks/useToDo.js";
+import { useDispatch } from "react-redux";
+import { addTask } from "../features/todo/todoSlice";
 
 export default function TodoForm() {
-    const { addTask } = useToDoActions();
+    const dispatch = useDispatch();
     const [error, setError] = useState(false);
 
     function handleAddTask(formData) {
@@ -12,10 +13,11 @@ export default function TodoForm() {
             setTimeout(() => setError(false), 2000);
             return;
         }
-        setError(false);
-        addTask(task.trim());
-    }
+        console.log("In handleAddTask", task.trim());
 
+        setError(false);
+        dispatch(addTask({ task: task.trim() }));
+    }
     return (
         <form
             className="flex items-center gap-2 bg-gray-800/50 rounded-xl p-2 shadow-md transition-all duration-300 hover:shadow-lg"
@@ -39,7 +41,7 @@ export default function TodoForm() {
                     }`}
                 />
                 {error && (
-                    <p className="absolute top-2 right-2 text-yellow-400 text-md animate-bounce">
+                    <p className="absolute top-2 right-2 text-yellow-400 text-md animate-fade-in-out">
                         Task cannot be empty!
                     </p>
                 )}
