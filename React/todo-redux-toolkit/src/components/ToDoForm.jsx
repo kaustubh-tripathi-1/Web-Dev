@@ -13,8 +13,6 @@ export default function TodoForm() {
             setTimeout(() => setError(false), 2000);
             return;
         }
-        console.log("In handleAddTask", task.trim());
-
         setError(false);
         dispatch(addTask({ task: task.trim() }));
     }
